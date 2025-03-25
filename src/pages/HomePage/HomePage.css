@@ -1,0 +1,115 @@
+.cover-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* غطاء شفاف */
+}
+
+.slider{
+  position: relative;
+}
+
+.moving{
+  position: absolute;
+  top: 20%;
+  right: 52%;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translate(50%, 50%);
+  -webkit-transform: translate(50%, 50%);
+  -moz-transform: translate(50%, 50%);
+  -ms-transform: translate(50%, 50%);
+  -o-transform: translate(50%, 50%);
+}
+
+form{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.input{
+  outline: none;
+  padding: 8px 20px;
+  border: none;
+  width: 84%;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  font-size: 17px;
+  font-weight: 500;
+  border: 2px solid var(--secondary-color);
+}
+
+.input:focus{
+  border: 2px solid var(--primary-color);
+}
+
+.linkButton{
+  width: 15%;
+}
+
+.button{
+  padding: 8px 2px;
+  border: none;
+  width: 100%;
+  text-align: center;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  background-color: var(--secondary-color);
+  font-size: 17px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.links{
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.link{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.link{
+  position: relative;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.icon{
+  width: 50px;
+  height: 50px;
+}
+
+.link span {
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+.link:hover span {
+  color: rgb(208, 205, 205);
+}
