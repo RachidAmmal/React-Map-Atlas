@@ -6,12 +6,22 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
   const [country, setCountry] = useState("");
 
-  return <div>
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
+
+  return (
+    <div>
       <SliderHome className="slider" />
       <div className="moving">
-        <form>
-          <input className="input" onChange={e => setCountry(e.target.value)} type="text" placeholder="Search a Country " />
-          <Link className="linkButton" to={country !== "" && "/88"}>
+        <form onSubmit={handleSubmit}>
+          <input
+            className="input"
+            onChange={e => setCountry(e.target.value)}
+            type="text"
+            placeholder="Search a Country "
+          />
+          <Link className="linkButton" to={country !== "" && "/main"}>
             <button className="button" type="submit">
               Search
             </button>
@@ -36,7 +46,8 @@ const HomePage = () => {
           </Link>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default HomePage;

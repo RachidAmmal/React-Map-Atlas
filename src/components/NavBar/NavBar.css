@@ -1,0 +1,117 @@
+.nav-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 73px;
+  padding: 10px 20px;
+  background-color: #b7e19a;
+  /* background-color: var(--primary-color-sky); */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.app-header {
+  text-decoration: none;
+  font-size: 33px;
+  font-weight: 800;
+  cursor: pointer;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.15);
+}
+
+.header-part-1 {
+  color: #578052;
+  transition: color 500ms;
+}
+
+.app-header:hover .header-part-1 {
+  color: #1e3b8b;
+}
+
+.header-part-2 {
+  color: #1e3b8b;
+  transition: color 500ms;
+}
+
+.app-header:hover .header-part-2 {
+  color: #578052;
+}
+
+.nav-sub-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  animation: container-fade-in 250ms;
+}
+
+.nav-sub-container-exit {
+  opacity: 0;
+  animation: container-fade-out 250ms;
+}
+
+.home-link-enter,
+.home-link-exit {
+  display: none;
+}
+
+.home-link-enter-done {
+  animation: container-fade-in 1s;
+  -webkit-animation: container-fade-in 1s;
+}
+
+/* NanLink */
+.nav-link-1{
+  font-size: 22px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 500ms;
+  color: #1e3b8b;
+  margin-right: 15px;
+}
+
+.nav-link-1:hover {
+  color: #2d59d1;
+}
+
+.nav-link-1:active {
+  color: #081c52;
+  transition: none;
+}
+
+.link-icon {
+  margin-right: 5px;
+  margin-bottom: 6px;
+}
+/*NavLink*/
+
+
+@keyframes tooltip-fade-in {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes container-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* had to duplicate this here instead of just using reverse*/
+@keyframes container-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

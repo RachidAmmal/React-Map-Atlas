@@ -5,11 +5,13 @@ import About from "./pages/About/About";
 import MainPage from "./pages/MainPage/MainPage";
 
 function App() {
-  return <Routes>
+  return (
+    <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/main" element={<MainPage />} />
       <Route path="/about" element={<About />} />
-    </Routes>;
+    </Routes>
+  );
 }
 
 export default App;

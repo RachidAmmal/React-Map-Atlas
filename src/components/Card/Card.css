@@ -1,0 +1,73 @@
+.card-c {
+  display: inline-block;
+  margin: 10px 0;
+  width: 49%;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 120px !important;
+  -webkit-border-radius: 120px !important;
+  -moz-border-radius: 120px !important;
+  -ms-border-radius: 120px !important;
+  -o-border-radius: 120px !important;
+}
+
+.card1{
+  animation: map-fade-in 1s 1;
+  -webkit-animation: map-fade-in 1s 1;
+}
+
+.card2{
+  animation: map-fade-in-two 1s 1;
+  -webkit-animation: map-fade-in-two 1s 1;
+}
+
+@keyframes map-fade-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50px);
+    -webkit-transform: translate(-50px);
+    -moz-transform: translate(-50px);
+    -ms-transform: translate(-50px);
+    -o-transform: translate(-50px);
+}
+  100% {
+    opacity: 1;
+    transform: translate(0);
+    -webkit-transform: translate(0);
+    -moz-transform: translate(0);
+    -ms-transform: translate(0);
+    -o-transform: translate(0);
+}
+}
+
+@keyframes map-fade-in-two {
+  0% {
+    opacity: 0;
+    transform: translate(50px);
+    -webkit-transform: translate(50px);
+    -moz-transform: translate(50px);
+    -ms-transform: translate(50px);
+    -o-transform: translate(50px);
+}
+  100% {
+    opacity: 1;
+    transform: translate(0);
+    -webkit-transform: translate(0);
+    -moz-transform: translate(0);
+    -ms-transform: translate(0);
+    -o-transform: translate(0);
+}
+}
+
+@media (min-width: 900px) and (max-width: 1015px){
+  .card {
+  width: 47%;
+  margin-top: 10;
+}
+}
+
+@media (max-width: 899px){
+  .card {
+  width: 93%;
+}
+}
