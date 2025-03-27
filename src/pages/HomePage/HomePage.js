@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SliderHome from "./SliderHome";
 import "./HomePage.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { showMyCountry } from "../../readux/map-slice";
+import { ZOOM_MAP } from "../../constants/ZOOM_MAP";
 
 const HomePage = () => {
   const [country, setCountry] = useState("");
@@ -10,17 +13,34 @@ const HomePage = () => {
     e.preventDefault();
   };
 
-  return (
-    <div>
+  const dispatch = useDispatch();
+
+  const handleMyLocation = () => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(position => {
+        dispatch(showMyCountry({
+            m: true,
+            zoom: ZOOM_MAP,
+            loc: {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            },
+            clickedLocationMap: null
+          }));
+      });
+    }
+  };
+
+
+  useEffect(() => {
+    handleMyLocation();
+  }, []);
+
+  return <div>
       <SliderHome className="slider" />
       <div className="moving">
         <form onSubmit={handleSubmit}>
-          <input
-            className="input"
-            onChange={e => setCountry(e.target.value)}
-            type="text"
-            placeholder="Search a Country "
-          />
+          <input className="input" onChange={e => setCountry(e.target.value)} type="text" placeholder="Search a Country " />
           <Link className="linkButton" to={country !== "" && "/main"}>
             <button className="button" type="submit">
               Search
@@ -36,7 +56,7 @@ const HomePage = () => {
             <img className="icon" src="/images/icons/quizzes.png" alt="" />
             <span>Quizzes</span>
           </Link>
-          <Link to="/main" className="link">
+          <Link onClick={handleMyLocation} to="/main" className="link">
             <img className="icon" src="/images/icons/map.png" alt="" />
             <span>My Country</span>
           </Link>
@@ -46,8 +66,7 @@ const HomePage = () => {
           </Link>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
 
 export default HomePage;

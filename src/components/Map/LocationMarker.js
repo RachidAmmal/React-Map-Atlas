@@ -1,40 +1,37 @@
-import React, { useState } from 'react'
-import { Marker, Popup, useMapEvents } from 'react-leaflet';
-import L from "leaflet";
-import "./Map.css";
+import { useEffect } from "react";
+import { useMap, useMapEvents } from "react-leaflet";
+import { useDispatch } from "react-redux";
+import { showMyCountry } from "../../readux/map-slice";
+import { ZOOM_MAP } from "../../constants/ZOOM_MAP";
 
-let DefaultIcon = L.icon({
-  iconUrl: "/images/icons/marker-icon.png",
-  iconSize: [25, 41],
-  iconAnchor: [10, 41],
-  popupAnchor: [2, -40]
-});
-L.Marker.prototype.options.icon = DefaultIcon;
+const LocationMarker = ({ loc, zoom, onMapClick }) => {
+  const map = useMap();
 
-function LocationMarker() {
-  const [position, setPosition] = useState(null);
+  const dispatch = useDispatch();
 
-  let m = true 
+  //const { loc } = useSelector(state => state.map);
 
-  const map = useMapEvents({
-    click() {
-      m && map.locate();
+  useEffect(
+    () => {
+      if (loc.lat !== 0 && loc.lng !== 0) {
+        map.setView([loc.lat, loc.lng], zoom);
+      }
     },
-    locationfound(e) {
-      setPosition(e.latlng);
-      map.flyTo(e.latlng, map.getZoom());
+    [loc, map]
+  );
+
+  useMapEvents({
+    click: e => {
+      const { lat, lng } = e.latlng;
+      dispatch(showMyCountry({
+          zoom: ZOOM_MAP,
+          loc: { lat: lat, lng: lng }
+        }));
+      onMapClick({ lat, lng });
     }
   });
 
-  
+  return null;
+};
 
-  return position === null
-    ? null
-    : <Marker position={position}>
-        <Popup className='popup'>You are here</Popup>
-      </Marker>;
-}
-
-
-
-export default LocationMarker
+export default LocationMarker;

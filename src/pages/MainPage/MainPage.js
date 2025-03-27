@@ -9,8 +9,8 @@ const MainPage = () => {
     <div>
       <NavBar/>
       <div className="mainCard">
-        <Card mapInfo={<MapCard />} card="card-c card1" />
         <Card mapInfo={<MapCard />} card="card-c card2" />
+        {/* <Card mapInfo={<MapCard />} card="card-c card2" /> */}
       </div>
     </div>
   );
