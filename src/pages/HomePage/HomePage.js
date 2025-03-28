@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import SliderHome from "./SliderHome";
 import "./HomePage.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { showMyCountry } from "../../readux/map-slice";
 import { ZOOM_MAP } from "../../constants/ZOOM_MAP";
+import { fetchTheCenter } from "../../readux/centering-theMap-slice";
 
 const HomePage = () => {
-  const [country, setCountry] = useState("");
+  const [country1, setCountry1] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -29,19 +30,22 @@ const HomePage = () => {
           }));
       });
     }
+
   };
 
-
-  useEffect(() => {
-    handleMyLocation();
-  }, []);
+  useEffect(
+    () => {
+      handleMyLocation();
+    },
+    []
+  );
 
   return <div>
       <SliderHome className="slider" />
       <div className="moving">
         <form onSubmit={handleSubmit}>
-          <input className="input" onChange={e => setCountry(e.target.value)} type="text" placeholder="Search a Country " />
-          <Link className="linkButton" to={country !== "" && "/main"}>
+          <input className="input" onChange={e => setCountry1(e.target.value)} type="text" placeholder="Search a Country " />
+          <Link className="linkButton" to={country1 !== "" && "/main"}>
             <button className="button" type="submit">
               Search
             </button>

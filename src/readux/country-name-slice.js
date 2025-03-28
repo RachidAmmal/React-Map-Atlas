@@ -10,10 +10,10 @@ const initialState = {
 
 export const fetchCountry = createAsyncThunk(
   "country/fetchDetails",
-  async (_, { getState, rejectWithValue }) => {
+  async (position, { getState, rejectWithValue }) => {
     try {
-      
-      const { lat, lng } = getState().map.loc;
+
+      const { lat, lng } = position;
 
       const response = await axios.get("https://api.geocodify.com/v2/reverse", {
         params: {

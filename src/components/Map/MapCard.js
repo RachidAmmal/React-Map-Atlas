@@ -25,13 +25,11 @@ const MapCard = () => {
   const [zommMap, setzommMap] = useState(zoom);
 
   const position = clickedLocation === null ? loc : clickedLocation;
+  console.log(position)
 
   useEffect(() => {
-    dispatch(fetchCountry());
+    dispatch(fetchCountry(position));
   }, [dispatch, position]);
-
-
-  console.log(position, data?.name);
 
   let DefaultIcon = L.icon({
     iconUrl: "/images/icons/marker-icon.png",
@@ -50,7 +48,7 @@ const MapCard = () => {
         />
         <LocationMarker
           loc={loc}
-          zoom={zoom}
+          zoom={zommMap}
           onMapClick={(location) => {
             setClickedLocation(location);
           }}
