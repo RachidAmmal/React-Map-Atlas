@@ -5,7 +5,6 @@ export const fetchTheCenter = createAsyncThunk(
   "map/fetchTheCenter",
   async (name, { getState, rejectWithValue }) => {
     try {
-
       const response = await axios.get(
         `https://nominatim.openstreetmap.org/search`,
         {
@@ -46,7 +45,7 @@ const centerSlice = createSlice({
         }
       })
       .addCase(fetchTheCenter.rejected, (state, action) => {
-        state.error = action.payload || "حدث خطأ غير معروف.";
+        state.error = action.payload || "An unknown error occurred.";
       });
   }
 });

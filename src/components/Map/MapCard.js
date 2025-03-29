@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 import "./Map.css";
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { useDispatch, useSelector } from "react-redux";
 
 import LocationMarker from "./LocationMarker";
@@ -63,7 +63,7 @@ const MapCard = () => {
                   : error
                   ? `Error: ${error}`
                   : data
-                  ? data.name
+                  ? data.name +" "+ data.code
                   : "Unknown"} />}
           </Marker>
         ) : null}

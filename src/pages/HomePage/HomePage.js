@@ -5,21 +5,26 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { showMyCountry } from "../../readux/map-slice";
 import { ZOOM_MAP } from "../../constants/ZOOM_MAP";
-import { fetchTheCenter } from "../../readux/centering-theMap-slice";
+import { fetchTheRandom } from "../../readux/random-country";
 
 const HomePage = () => {
   const [country1, setCountry1] = useState("");
 
-  const handleSubmit = e => {
-    e.preventDefault();
-  };
+  const { random } = useSelector((state) => state.random);
+
+  const [zebbi, setzebbi] = useState(0);
 
   const dispatch = useDispatch();
 
   const handleMyLocation = () => {
+    setzebbi(1)
+  };
+
+  const handleMyLocation1 = () => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
-        dispatch(showMyCountry({
+        dispatch(
+          showMyCountry({
             m: true,
             zoom: ZOOM_MAP,
             loc: {
@@ -27,32 +32,42 @@ const HomePage = () => {
               lng: position.coords.longitude
             },
             clickedLocationMap: null
-          }));
+          })
+        );
       });
     }
-
   };
 
-  useEffect(
-    () => {
-      handleMyLocation();
-    },
-    []
-  );
+  const handleMyLocationRand = () => {
+  setzebbi(2)
+};
+
+const handleMyLocationRand2 = () => {
+  dispatch(fetchTheRandom());
+};
+
+
+useEffect(
+  () => {
+    if (zebbi === 1) handleMyLocation1();
+    if (zebbi === 2) handleMyLocationRand2();
+  },
+  [zebbi]
+);
 
   return <div>
       <SliderHome className="slider" />
       <div className="moving">
-        <form onSubmit={handleSubmit}>
-          <input className="input" onChange={e => setCountry1(e.target.value)} type="text" placeholder="Search a Country " />
-          <Link className="linkButton" to={country1 !== "" && "/main"}>
+        <form onSubmit={e => e.preventDefault()}>
+          <input className="input" onChange={e => setCountry1(e.target.value)} type="text" placeholder="Search a Country" />
+          <Link className="linkButton" to={country1 !== "" ? "/main" : "#"}>
             <button className="button" type="submit">
               Search
             </button>
           </Link>
         </form>
         <div className="links">
-          <Link to="/main" className="link">
+          <Link onClick={handleMyLocationRand} to="/main" className="link">
             <img className="icon" src="/images/icons/navigation.png" alt="" />
             <span>Random Country</span>
           </Link>

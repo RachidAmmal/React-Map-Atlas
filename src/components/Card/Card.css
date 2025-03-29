@@ -60,14 +60,14 @@
 }
 
 @media (min-width: 900px) and (max-width: 1015px){
-  .card {
+  .card-c {
   width: 47%;
   margin-top: 10;
 }
 }
 
 @media (max-width: 899px){
-  .card {
+  .card-c {
   width: 93%;
 }
 }

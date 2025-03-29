@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
 const mapInitialState = {
   m: false,
@@ -17,10 +17,10 @@ const mapSlice = createSlice({
     showMyCountry: (state, action) => {
       state.m = action.payload.m;
       state.zoom = action.payload.zoom;
-      state.loc = action.payload.loc
+      state.loc = action.payload.loc;
     }
   }
-})
+});
 
-export const { showMyCountry } = mapSlice.actions
-export default mapSlice.reducer
+export const { showMyCountry } = mapSlice.actions;
+export default mapSlice.reducer;

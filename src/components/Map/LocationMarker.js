@@ -13,7 +13,7 @@ const LocationMarker = ({ loc, zoom, onMapClick }) => {
   const countryName = useSelector((state) => state.country.data?.name);
 
   useEffect(() => {
-    if (loc.lat !== 45 && loc.lng !== 15) {
+    if (loc.lat !== 0 && loc.lng !== 0) {
       map.setView([loc.lat, loc.lng], zoom);
     }
   }, [loc, map]);
@@ -34,7 +34,6 @@ const LocationMarker = ({ loc, zoom, onMapClick }) => {
         lat,
         lng
       });
-
       dispatch(fetchTheCenter(countryName));
     }
   });

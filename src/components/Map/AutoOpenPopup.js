@@ -11,13 +11,13 @@ const AutoOpenPopup = ({ position, name }) => {
         const popup = L.popup({ offset: [3, -30] })
           .setLatLng(position)
           .setContent(name)
-          .openOn(map); 
+          .openOn(map);
       }
     },
     [position, name, map]
   );
 
-  return null; 
+  return null;
 };
 
-export default AutoOpenPopup
+export default AutoOpenPopup;
