@@ -4,11 +4,11 @@
   width: 49%;
   background-color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  border-radius: 120px !important;
-  -webkit-border-radius: 120px !important;
-  -moz-border-radius: 120px !important;
-  -ms-border-radius: 120px !important;
-  -o-border-radius: 120px !important;
+  border-radius: 6px !important;
+  -webkit-border-radius: 6px !important;
+  -moz-border-radius: 6px !important;
+  -ms-border-radius: 6px !important;
+  -o-border-radius: 6px !important;
 }
 
 .card1{

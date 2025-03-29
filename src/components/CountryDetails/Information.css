@@ -1,0 +1,77 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.cardInfo {
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.cardSubtitle{
+  margin: 25px 0;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+.blue {
+  color: #007bff;
+}
+
+.green {
+  color: #28a745;
+}
+
+.red {
+  color: #dc3545;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cardInfo {
+    max-width: 90%;
+    padding: 15px;
+  }
+  .card-title {
+    font-size: 1.3rem;
+  }
+  .card-item {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardInfo {
+    max-width: 95%;
+    padding: 10px;
+  }
+  .card-title {
+    font-size: 1.2rem;
+  }
+  .card-item {
+    font-size: 0.85rem;
+  }
+}

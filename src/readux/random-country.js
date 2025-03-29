@@ -8,11 +8,11 @@ export const fetchTheRandom = createAsyncThunk(
     try {
       const randomIndex = Math.floor(Math.random() * COUNTRY_NAMES_LIST.length);
       const selectedCountry = COUNTRY_NAMES_LIST[randomIndex];
-      // const commonName = Array.isArray(selectedCountry.common)
-      //   ? selectedCountry.common[0]
-      //   : selectedCountry.common;
+      const commonName = Array.isArray(selectedCountry.common)
+        ? selectedCountry.common[0]
+        : selectedCountry.common;
 
-        const commonName = selectedCountry?.common?.[0] || selectedCountry?.common || "Unknown";
+      //const commonName = selectedCountry?.common?.[0] || selectedCountry?.common || "Unknown";
 
       const response = await axios.get(
         `https://nominatim.openstreetmap.org/search`,
