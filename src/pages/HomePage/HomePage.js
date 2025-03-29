@@ -12,12 +12,12 @@ const HomePage = () => {
 
   const { random } = useSelector((state) => state.random);
 
-  const [zebbi, setzebbi] = useState(0);
+  const [rand, setRand] = useState(0);
 
   const dispatch = useDispatch();
 
   const handleMyLocation = () => {
-    setzebbi(1)
+    setRand(1);
   };
 
   const handleMyLocation1 = () => {
@@ -39,7 +39,7 @@ const HomePage = () => {
   };
 
   const handleMyLocationRand = () => {
-  setzebbi(2)
+  setRand(2);
 };
 
 const handleMyLocationRand2 = () => {
@@ -49,10 +49,10 @@ const handleMyLocationRand2 = () => {
 
 useEffect(
   () => {
-    if (zebbi === 1) handleMyLocation1();
-    if (zebbi === 2) handleMyLocationRand2();
+    if (rand === 1) handleMyLocation1();
+    if (rand === 2) handleMyLocationRand2();
   },
-  [zebbi]
+  [rand]
 );
 
   return <div>

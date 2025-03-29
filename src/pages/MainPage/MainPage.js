@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTheCenter } from "../../readux/centering-theMap-slice";
 import { ZOOM_MAP } from "../../constants/ZOOM_MAP";
 import { showMyCountry } from "../../readux/map-slice";
-import { fetchTheRandom } from "../../readux/random-country";
 
 const MainPage = () => {
   const countryName = useSelector((state) => state.country.data?.name);
@@ -15,11 +14,6 @@ const MainPage = () => {
   const { random } = useSelector((state) => state.random);
 
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchTheCenter(countryName));
-  // }, [countryName]);
-
 
   const handleMyLocationRand2 = () => {
     if (random?.lat && random?.lng) {
