@@ -5,17 +5,14 @@ import SearchBar from "../SearchBar/SearchBar";
 import { GiEarthAfricaEurope } from "react-icons/gi";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { HiPuzzle } from "react-icons/hi";
+import { IoHome } from "react-icons/io5";
 
 const NavBar = () => {
   const path = useLocation();
   const pathIsHome = path.pathname === "/";
 
-  return (
-    <div className="nav-bar-container">
-      <NavLink
-        to="/"
-        className={`${"app-header"} ${pathIsHome && "app-header-is-home"}`}
-      >
+  return <div className="nav-bar-container">
+      <NavLink to="/" className={`${"app-header"} ${pathIsHome && "app-header-is-home"}`}>
         <span className="header-part-1">Map</span>
         <span className="header-part-2">Atlas</span>
       </NavLink>
@@ -23,39 +20,32 @@ const NavBar = () => {
         <SearchBar />
       </div>
       <div>
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            `${"nav-link-1"} ${isActive && "nav-link-active"}`}
-        >
+        <NavLink to="/" className={({ isActive }) => `${"nav-link-1"} ${isActive && "nav-link-active"}`}>
           <span>
-            <GiEarthAfricaEurope className="link-icon" />
+            <IoHome className="link-icon" />
             Home
           </span>
         </NavLink>
-        <NavLink
-          to="/quiz"
-          className={({ isActive }) =>
-            `${"nav-link-1"} ${isActive && "nav-link-active"}`}
-        >
+        <NavLink to="/main" className={({ isActive }) => `${"nav-link-1"} ${isActive && "nav-link-active"}`}>
+          <span>
+            <GiEarthAfricaEurope className="link-icon" />
+            Main Page
+          </span>
+        </NavLink>
+        <NavLink to="/quiz" className={({ isActive }) => `${"nav-link-1"} ${isActive && "nav-link-active"}`}>
           <span>
             <HiPuzzle className="link-icon" />
             Quizzes
           </span>
         </NavLink>
-        <NavLink
-          to="/about"
-          className={({ isActive }) =>
-            `${"nav-link-1"} ${isActive && "nav-link-active"}`}
-        >
+        <NavLink to="/about" className={({ isActive }) => `${"nav-link-1"} ${isActive && "nav-link-active"}`}>
           <span>
             <BsFillInfoCircleFill className="link-icon" />
             About
           </span>
         </NavLink>
       </div>
-    </div>
-  );
+    </div>;
 };
 
 export default NavBar;

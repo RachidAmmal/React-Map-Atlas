@@ -14,8 +14,7 @@ const Information = () => {
         </p>
         <div className="card-content">
           <div className="card-item">
-            {/* <Globe className="icon blue" /> */}
-            <h3 className="icon blue">🌍</h3>
+            <h3 className="iconInfo blue">🌍</h3>
             <div>
               <h3 className="item-title">Explore Countries</h3>
               <p className="item-description">
@@ -25,8 +24,7 @@ const Information = () => {
             </div>
           </div>
           <div className="card-item">
-            {/* <Puzzle className="icon green" /> */}
-            <h3 className="icon green">🧠</h3>
+            <h3 className="iconInfo green">🧠</h3>
             <div>
               <h3 className="item-title">Test Your Knowledge</h3>
               <p className="item-description">
@@ -35,10 +33,9 @@ const Information = () => {
               </p>
             </div>
           </div>
-
           <div className="card-item">
-            <h3 className="icon red">
-              <MapPin className="icon red" />
+            <h3 className="iconInfo red">
+              <MapPin className="iconInfo red" />
             </h3>
             <div>
               <h3 className="item-title">Know Your Country</h3>
