@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { showMyCountry } from "../../readux/map-slice";
 import { ZOOM_MAP } from "../../constants/ZOOM_MAP";
 import { fetchTheRandom } from "../../readux/random-country";
+import { fetchTheCenter } from "../../readux/centering-theMap-slice";
+import { fetchCountryInfo } from "../../readux/country-info";
 
 const HomePage = () => {
   const [country1, setCountry1] = useState("");
-
-  const { random } = useSelector((state) => state.random);
 
   const [rand, setRand] = useState(0);
 
@@ -39,29 +39,43 @@ const HomePage = () => {
   };
 
   const handleMyLocationRand = () => {
-  setRand(2);
-};
+    setRand(2);
+  };
 
-const handleMyLocationRand2 = () => {
-  dispatch(fetchTheRandom());
-};
+  const handleMyLocationRand2 = () => {
+    dispatch(fetchTheRandom());
+  };
 
+  const hanleInfoCount = country1 => {
+    dispatch(fetchCountryInfo(country1));
+  };
 
-useEffect(
-  () => {
-    if (rand === 1) handleMyLocation1();
-    if (rand === 2) handleMyLocationRand2();
-  },
-  [rand]
-);
+  useEffect(
+    () => {
+      if (rand === 1) handleMyLocation1();
+      if (rand === 2) handleMyLocationRand2();
+    },
+    [rand]
+  );
 
-  return <div>
+  return (
+    <div>
       <SliderHome className="slider" />
       <div className="moving">
         <form onSubmit={e => e.preventDefault()}>
-          <input className="input" onChange={e => setCountry1(e.target.value)} type="text" placeholder="Search a Country" />
-          <Link className="linkButton" to={country1 !== "" ? "/main" : "#"}>
-            <button className="button" type="submit">
+          <input
+            className="input"
+            value={country1}
+            onChange={e => setCountry1(e.target.value)}
+            type="text"
+            placeholder="Search a Country"
+          />
+          <Link className="linkButton" to={country1 !== "" ? "/main" : ""}>
+            <button
+              onClick={() => hanleInfoCount(country1)}
+              className="button"
+              type="submit"
+            >
               Search
             </button>
           </Link>
@@ -85,7 +99,8 @@ useEffect(
           </Link>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default HomePage;

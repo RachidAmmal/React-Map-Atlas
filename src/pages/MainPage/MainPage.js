@@ -14,7 +14,25 @@ const MainPage = () => {
 
   const { random } = useSelector((state) => state.random);
 
+  const { data } = useSelector((state) => state.countryInfo);
+
   const dispatch = useDispatch();
+
+  const handleCountryInfo = () => {
+    if (data) {
+      dispatch(
+        showMyCountry({
+          m: true,
+          zoom: ZOOM_MAP,
+          loc: {
+            lat: data.latlng[0],
+            lng: data.latlng[1]
+          },
+          clickedLocationMap: null
+        })
+      );
+    }
+  };
 
   const handleMyLocationRand2 = () => {
     if (random?.lat && random?.lng) {
@@ -33,14 +51,16 @@ const MainPage = () => {
   };
 
   useEffect(() => {
+    handleCountryInfo()
+  }, [data, countryName]);
+
+  useEffect(() => {
     handleMyLocationRand2();
   }, [random]);
 
   useEffect(() => {
     dispatch(fetchTheCenter(countryName));
   }, [countryName])
-  
-  console.log(countryName);
 
   return (
     <div>

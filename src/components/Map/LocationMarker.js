@@ -5,15 +5,17 @@ import { showMyCountry } from "../../readux/map-slice";
 import { ZOOM_MAP } from "../../constants/ZOOM_MAP";
 import { fetchTheCenter } from "../../readux/centering-theMap-slice";
 
-const LocationMarker = ({ loc, zoom, onMapClick }) => {
+const LocationMarker = ({ loc, zoom, onMapClick, data }) => {
   const map = useMap();
 
   const dispatch = useDispatch();
 
   const countryName = useSelector((state) => state.country.data?.name);
 
+  const {center} = useSelector((state) => state.center);
+
   useEffect(() => {
-    if (loc.lat !== 0 && loc.lng !== 0) {
+    if (loc.lat !== 45 && loc.lng !== 15) {
       map.setView([loc.lat, loc.lng], zoom);
     }
   }, [loc, map]);
