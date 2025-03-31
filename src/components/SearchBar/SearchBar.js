@@ -1,30 +1,110 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
 import { useDispatch } from "react-redux";
-import { fetchCountryInfo } from "../../readux/country-info";
+import { fetchCountryInfo, showMySearch } from "../../readux/country-info";
+import COUNTRY_NAMES_LIST from "../../constants/COUNTRY_NAMES_LIST";
 
 const SearchBar = () => {
-  const [countrySearch, setCountrySearch] = useState("");
+  const suggestions = COUNTRY_NAMES_LIST;
 
-  const dispatch = useDispatch()
+  const [countrySearch, setCountrySearch] = useState("");
+  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+  const [displayingSugg, setDisplayingSugg] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleChange = e => {
+    const value = e.target.value.toLowerCase();
+    setCountrySearch(value);
+
+    if (value) {
+      const filtered = suggestions
+        .filter(({ common, official }) => {
+          const commonNames = Array.isArray(common) ? common : [common];
+          return (
+            commonNames.some(name => name.toLowerCase().includes(value)) ||
+            official.toLowerCase().includes(value)
+          );
+        })
+        .sort((a, b) => {
+          // تحويل القيم إلى lowercase للمقارنة الصحيحة
+          const aCommon = Array.isArray(a.common)
+            ? a.common[0].toLowerCase()
+            : a.common.toLowerCase();
+          const bCommon = Array.isArray(b.common)
+            ? b.common[0].toLowerCase()
+            : b.common.toLowerCase();
+
+          // الأولوية للكلمات التي تبدأ بالحروف المكتوبة
+          if (aCommon.startsWith(value) && !bCommon.startsWith(value))
+            return -1;
+          if (!aCommon.startsWith(value) && bCommon.startsWith(value)) return 1;
+          return aCommon.localeCompare(bCommon); // ترتيب أبجدي
+        })
+        .slice(0, 10); // الحد الأقصى 10 اقتراحات
+
+      setDisplayingSugg(false);
+      setFilteredSuggestions(filtered);
+    } else {
+      setFilteredSuggestions([]);
+      setDisplayingSugg(true);
+    }
+  };
+
+  const handleSelect = suggestion => {
+    setCountrySearch(
+      Array.isArray(suggestion.common)
+        ? suggestion.common[0]
+        : suggestion.common
+    );
+    setFilteredSuggestions([]);
+  };
 
   const handleSearchCountry = () => {
-    dispatch(fetchCountryInfo(countrySearch))
-    setCountrySearch("")
-  }
+    dispatch(showMySearch({ searching: true }));
+    dispatch(fetchCountryInfo(countrySearch));
+    setCountrySearch("");
+    setDisplayingSugg(true);
+  };
 
   const searchSubmitHandler = e => {
     e.preventDefault();
   };
 
-  return <div>
+  return (
+    <div className="searchDiv">
       <form onSubmit={searchSubmitHandler}>
-        <input value={countrySearch} onChange={e => setCountrySearch(e.target.value)} className="input-search" type="text" placeholder="Search a Country" />
-        <button onClick={handleSearchCountry} disabled={countrySearch === "" ? true : false} className="button-search" type="submit">
+        <input
+          value={countrySearch}
+          onChange={handleChange}
+          className="input-search"
+          type="text"
+          placeholder="Search a Country"
+        />
+        <button
+          onClick={handleSearchCountry}
+          disabled={countrySearch === ""}
+          className="button-search"
+          type="submit"
+        >
           Search
         </button>
       </form>
-    </div>;
+      {filteredSuggestions.length > 0 &&
+        <ul className={`suggestions ${displayingSugg ? "displaySugg" : ""}`}>
+          {filteredSuggestions.map((suggestion, index) =>
+            <li
+              key={index}
+              onClick={() => handleSelect(suggestion)}
+              className="p-2 hover:bg-gray-200 cursor-pointer text-gray-400"
+            >
+              {Array.isArray(suggestion.common)
+                ? suggestion.common.join(" / ")
+                : suggestion.common}
+            </li>
+          )}
+        </ul>}
+    </div>
+  );
 };
 
 export default SearchBar;

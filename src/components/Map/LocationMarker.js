@@ -12,13 +12,17 @@ const LocationMarker = ({ loc, zoom, onMapClick, data }) => {
 
   const countryName = useSelector((state) => state.country.data?.name);
 
+  const { searching } = useSelector((state) => state.countryInfo);
+
   const {center} = useSelector((state) => state.center);
 
   useEffect(() => {
-    if (loc.lat !== 45 && loc.lng !== 15) {
+  if (center.lat !== 45 && center.lng !== 15) {
+      map.setView([center.lat, center.lng], zoom);
+  } else if (loc.lat !== 45 && loc.lng !== 15) {
       map.setView([loc.lat, loc.lng], zoom);
     }
-  }, [loc, map]);
+  }, [loc, map, center]);
 
   useMapEvents({
     click: (e) => {

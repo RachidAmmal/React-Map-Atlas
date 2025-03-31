@@ -8,18 +8,19 @@ import { fetchTheCenter } from "../../readux/centering-theMap-slice";
 import { ZOOM_MAP } from "../../constants/ZOOM_MAP";
 import { showMyCountry } from "../../readux/map-slice";
 import CountryDetails from "../../components/CountryDetails/CountryDetails";
+import { showMySearch } from "../../readux/country-info";
 
 const MainPage = () => {
   const countryName = useSelector((state) => state.country.data?.name);
 
   const { random } = useSelector((state) => state.random);
 
-  const { data } = useSelector((state) => state.countryInfo);
+  const { data, searching } = useSelector((state) => state.countryInfo);
 
   const dispatch = useDispatch();
 
   const handleCountryInfo = () => {
-    if (data) {
+    if (data && searching === true) {
       dispatch(
         showMyCountry({
           m: true,
@@ -31,6 +32,7 @@ const MainPage = () => {
           clickedLocationMap: null
         })
       );
+      dispatch(showMySearch({ searching: false }));
     }
   };
 

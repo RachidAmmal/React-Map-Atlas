@@ -11,12 +11,14 @@
 }
 
 .cardTitle {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: bold;
 }
 
 .cardSubtitle{
   margin: 25px 0;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
 .card-content {
@@ -35,6 +37,15 @@
 .iconInfo {
   width: 30px;
   height: 30px;
+}
+
+.item-description{
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.item-title{
+  font-size: 1.6rem;
 }
 
 .blue {

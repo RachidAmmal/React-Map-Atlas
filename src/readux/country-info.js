@@ -23,8 +23,13 @@ const countryInfoSlice = createSlice({
     data: null,
     loading: false,
     error: null,
+    searching: false
   },
-  reducers: {},
+  reducers: {
+    showMySearch: (state, action) => {
+      state.searching = action.payload.searching;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCountryInfo.pending, (state) => {
@@ -42,4 +47,5 @@ const countryInfoSlice = createSlice({
   },
 });
 
+export const { showMySearch } = countryInfoSlice.actions;
 export default countryInfoSlice.reducer;
