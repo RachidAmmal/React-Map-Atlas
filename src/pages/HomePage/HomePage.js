@@ -53,37 +53,25 @@ const HomePage = () => {
   useEffect(
     () => {
       if (rand === 1) handleMyLocation1();
-      if (rand === 2) handleMyLocationRand2();
     },
     [rand]
   );
 
-  return (
-    <div>
+  return <div>
       <SliderHome className="slider" />
       <div className="moving">
         <form onSubmit={e => e.preventDefault()}>
-          <input
-            className="input"
-            value={country1}
-            onChange={e => setCountry1(e.target.value)}
-            type="text"
-            placeholder="Search a Country"
-          />
+          <input className="input" value={country1} onChange={e => setCountry1(e.target.value)} type="text" placeholder="Search a Country" />
           <Link className="linkButton" to={country1 !== "" ? "/main" : ""}>
-            <button
-              onClick={() => hanleInfoCount(country1)}
-              className="button"
-              type="submit"
-            >
+            <button onClick={() => hanleInfoCount(country1)} className="button" type="submit">
               Search
             </button>
           </Link>
         </form>
         <div className="links">
-          <Link onClick={handleMyLocationRand} to="/main" className="link">
-            <img className="icon" src="/images/icons/navigation.png" alt="" />
-            <span>Random Country</span>
+          <Link to="/main" className="link">
+            <img className="icon" src="/images/icons/homepage.png" alt="" />
+            <span>Main Page</span>
           </Link>
           <Link to="/quiz" className="link">
             <img className="icon" src="/images/icons/quizzes.png" alt="" />
@@ -99,8 +87,7 @@ const HomePage = () => {
           </Link>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
 
 export default HomePage;

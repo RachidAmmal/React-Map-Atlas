@@ -31,7 +31,7 @@ const CountryDetailsInfo = ({ countryName }) => {
     <div className="country-container">
       <div className="country-header" >
         <h1>{data?.name?.common}</h1>
-        <img src={data?.flags?.svg} alt={`Flag of ${data?.name?.common}`} className="country-flag" />
+        <img src={data?.flags?.png} alt={`Flag of ${data?.name?.common}`} className="country-flag" />
       </div>
       <div className='OfficialName'>
         <h4> 🔎 Official Name: </h4> 

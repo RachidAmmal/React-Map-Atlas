@@ -88,6 +88,14 @@ const SearchBar = () => {
         >
           Search
         </button>
+
+        <button
+          
+          className="button-search"
+          type="submit"
+        >
+          Random
+        </button>
       </form>
       {filteredSuggestions.length > 0 &&
         <ul className={`suggestions ${displayingSugg ? "displaySugg" : ""}`}>
