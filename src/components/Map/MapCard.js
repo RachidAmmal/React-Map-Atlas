@@ -35,8 +35,6 @@ const MapCard = () => {
   const position = clickedLocation === null ? loc : clickedLocation;
   const position1 = data1?.latlng ? center : loc;
 
-  console.log(position);
-
   useEffect(() => {
     dispatch(fetchCountry(position));
   }, [dispatch, position]);

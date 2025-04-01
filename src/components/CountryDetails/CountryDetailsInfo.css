@@ -1,0 +1,91 @@
+.country-header {
+  background-size: cover;
+  background-position: center;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  position: relative;
+  animation: transition-animation 0.5s 1;
+  -webkit-animation: transition-animation 0.5s 1;
+}
+
+.country-flag {
+  width: 100%;
+  height: 250px; 
+  display: block;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.country-header h1{
+  position: absolute;
+  z-index: 1000;
+  align-items: center;
+  width: 100%;
+  padding: 8px 15px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+}
+
+.country-info-details{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.OfficialName{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.country-info {
+  padding: 0 15px;
+  font-size: 18px;
+  text-align: left;
+}
+
+.country-info p {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.country-info strong {
+  margin-left: 5px;
+}
+
+/* التحميل */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.error-text {
+  color: red;
+  text-align: center;
+  font-size: 18px;
+}
+
+@keyframes transition-animation {
+  0% {
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+}
+  100% {
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+}
+}

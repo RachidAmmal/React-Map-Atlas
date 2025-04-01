@@ -10,7 +10,7 @@ const CountryDetails = ({ countryName }) => {
   const lng = loc.lng
 
   return <div>
-      {lat !== 45 && lng !== 15 ? <CountryDetailsInfo/> : <Information />}
+      {lat !== 45 && lng !== 15 ? <CountryDetailsInfo countryName = {countryName}/> : <Information />}
     </div>;
 };
 
