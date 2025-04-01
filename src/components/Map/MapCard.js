@@ -33,7 +33,7 @@ const MapCard = () => {
   const [zommMap, setzommMap] = useState(zoom);
 
   const position = clickedLocation === null ? loc : clickedLocation;
-  const position1 = data1?.latlng && center;
+  const position1 = data1?.latlng ? center : loc;
 
   console.log(position);
 

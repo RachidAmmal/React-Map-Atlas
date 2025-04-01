@@ -17,12 +17,12 @@ const LocationMarker = ({ loc, zoom, onMapClick, data }) => {
   const {center} = useSelector((state) => state.center);
 
   useEffect(() => {
-  if (center.lat !== 45 && center.lng !== 15) {
-      map.setView([center.lat, center.lng], zoom);
-  } else if (loc.lat !== 45 && loc.lng !== 15) {
+    if (loc.lat !== 0 && loc.lng !== 0) {
       map.setView([loc.lat, loc.lng], zoom);
-    }
-  }, [loc, map, center]);
+    } else if (center.lat !== 45 && center.lng !== 15) {
+      map.setView([center.lat, center.lng], zoom);
+  } 
+  }, [loc, map]);
 
   useMapEvents({
     click: (e) => {
