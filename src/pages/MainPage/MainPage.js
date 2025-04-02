@@ -9,6 +9,7 @@ import { ZOOM_MAP } from "../../constants/ZOOM_MAP";
 import { showMyCountry } from "../../readux/map-slice";
 import CountryDetails from "../../components/CountryDetails/CountryDetails";
 import { showMySearch } from "../../readux/country-info";
+import BordersCountries from "../../components/CountryDetails/BordersCountries";
 
 const MainPage = () => {
   const countryName = useSelector((state) => state.country.data?.name);
@@ -65,12 +66,13 @@ const MainPage = () => {
   }, [countryName])
 
   return (
-    <div>
+    <div className="cont">
       <NavBar />
       <div className="mainCard">
         <Card mapInfo={<CountryDetails countryName={countryName}/>} card="card-c card1" />
         <Card mapInfo={<MapCard />} card="card-c card2" />
       </div>
+      <BordersCountries/>
     </div>
   );
 };

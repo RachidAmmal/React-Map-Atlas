@@ -785,11 +785,11 @@ const COUNTRY_NAMES_LIST = [
     official: "United States of America",
     isUN: true
   },
-  {
-    common: "United States Virgin Islands",
-    official: "Virgin Islands of the United States",
-    isUN: false
-  },
+  // {
+  //   common: "United States Virgin Islands",
+  //   official: "Virgin Islands of the United States",
+  //   isUN: false
+  // },
   {
     common: "Ghana",
     official: "Republic of Ghana",
@@ -1131,11 +1131,11 @@ const COUNTRY_NAMES_LIST = [
     official: "Republic of Chile",
     isUN: true
   },
-  {
-    common: "United States Minor Outlying Islands",
-    official: "United States Minor Outlying Islands",
-    isUN: false
-  },
+  // {
+  //   common: "United States Minor Outlying Islands",
+  //   official: "United States Minor Outlying Islands",
+  //   isUN: false
+  // },
   {
     common: "Benin",
     official: "Republic of Benin",

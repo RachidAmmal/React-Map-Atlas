@@ -3,7 +3,8 @@ import mapReducer from "./map-slice";
 import countryReducer from "./country-name-slice";
 import centerReducer from "./centering-theMap-slice";
 import randomSlice from "./random-country";
-import countryInfoSlice from "./country-info"
+import countryInfoSlice from "./country-info";
+import borderSlice from "./bordering-countries";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     country: countryReducer,
     center: centerReducer,
     random: randomSlice,
-    countryInfo: countryInfoSlice
+    countryInfo: countryInfoSlice,
+    border: borderSlice
   }
 });
