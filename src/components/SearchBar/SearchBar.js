@@ -90,7 +90,6 @@ const SearchBar = () => {
         </button>
 
         <button
-          
           className="button-search"
           type="submit"
         >
