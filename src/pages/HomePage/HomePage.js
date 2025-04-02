@@ -18,6 +18,7 @@ const HomePage = () => {
     setRand(1);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleMyLocation1 = () => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
@@ -44,7 +45,7 @@ const HomePage = () => {
     () => {
       if (rand === 1) handleMyLocation1();
     },
-    [rand]
+    [rand, dispatch, handleMyLocation1]
   );
 
   return <div>

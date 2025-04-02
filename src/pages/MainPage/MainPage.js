@@ -20,6 +20,7 @@ const MainPage = () => {
 
   const dispatch = useDispatch();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleCountryInfo = () => {
     if (data && searching === true) {
       dispatch(
@@ -37,6 +38,7 @@ const MainPage = () => {
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleMyLocationRand2 = () => {
     if (random?.lat && random?.lng) {
       dispatch(
@@ -55,11 +57,11 @@ const MainPage = () => {
 
   useEffect(() => {
     handleCountryInfo()
-  }, [data, countryName, searching, dispatch]);
+  }, [data, countryName, searching, dispatch, handleCountryInfo]);
 
   useEffect(() => {
     handleMyLocationRand2();
-  }, [random, dispatch]);
+  }, [random, dispatch, handleMyLocationRand2]);
 
   useEffect(() => {
     dispatch(fetchTheCenter(countryName));

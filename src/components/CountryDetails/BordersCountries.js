@@ -8,13 +8,11 @@ const BordersCountries = () => {
     const { data } = useSelector(state => state.countryInfo);
     const dispatch = useDispatch()
 
-    console.log(data?.borders);
-
     useEffect(() => {
       dispatch(fetchBorderCountries(data?.borders));
-    }, [data?.borders]);
+    }, [data?.borders, dispatch]);
 
-    const { countries, loading, error } = useSelector((state) => state.border);
+    const { countries, loading } = useSelector((state) => state.border);
 
   return (
     <div className="borders-container">
