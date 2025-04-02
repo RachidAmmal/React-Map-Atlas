@@ -38,14 +38,6 @@ const HomePage = () => {
     }
   };
 
-  const handleMyLocationRand = () => {
-    setRand(2);
-  };
-
-  const handleMyLocationRand2 = () => {
-    dispatch(fetchTheRandom());
-  };
-
   const hanleInfoCount = country1 => {
     dispatch(fetchCountryInfo(country1));
   };
