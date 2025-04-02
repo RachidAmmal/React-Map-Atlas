@@ -1,11 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-
 import "./Map.css";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { useDispatch, useSelector } from "react-redux";
-
 import LocationMarker from "./LocationMarker";
 import MapZoomHandler from "./MapZoomHandler ";
 import { fetchCountry } from "../../readux/country-name-slice";
@@ -30,7 +27,7 @@ const MapCard = () => {
 
   const [clickedLocation, setClickedLocation] = useState(clickedLocationMap);
 
-  const [zommMap, setzommMap] = useState(zoom);
+  const [zommMap] = useState(zoom);
 
   const position = clickedLocation === null ? loc : clickedLocation;
   const position1 = data1?.latlng ? center : loc;

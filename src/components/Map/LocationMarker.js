@@ -20,7 +20,7 @@ const LocationMarker = ({ loc, zoom, onMapClick, data }) => {
     } else if (center.lat !== 45 && center.lng !== 15) {
       map.setView([center.lat, center.lng], zoom);
   } 
-  }, [loc, map]);
+  }, [center.lat, center.lng, loc, map, zoom]);
 
   useMapEvents({
     click: (e) => {
