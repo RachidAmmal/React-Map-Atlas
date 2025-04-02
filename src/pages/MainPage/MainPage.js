@@ -55,15 +55,15 @@ const MainPage = () => {
 
   useEffect(() => {
     handleCountryInfo()
-  }, [data, countryName]);
+  }, [data, countryName, searching, dispatch]);
 
   useEffect(() => {
     handleMyLocationRand2();
-  }, [random]);
+  }, [random, dispatch]);
 
   useEffect(() => {
     dispatch(fetchTheCenter(countryName));
-  }, [countryName])
+  }, [countryName, dispatch])
 
   return (
     <div className="cont">
