@@ -11,7 +11,7 @@ const AutoOpenPopup = ({ position, name }) => {
   useEffect(
     () => {
       if (position && name) {
-        const popup = L.popup({ offset: [0, 0] })
+        L.popup({ offset: [0, 0] })
           .setLatLng(position)
           .setContent(name)
           .openOn(map);
