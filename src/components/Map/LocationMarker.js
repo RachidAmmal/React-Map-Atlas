@@ -12,8 +12,6 @@ const LocationMarker = ({ loc, zoom, onMapClick, data }) => {
 
   const countryName = useSelector((state) => state.country.data?.name);
 
-  const { searching } = useSelector((state) => state.countryInfo);
-
   const {center} = useSelector((state) => state.center);
 
   useEffect(() => {

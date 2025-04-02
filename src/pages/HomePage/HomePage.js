@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import SliderHome from "./SliderHome";
 import "./HomePage.css";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { showMyCountry } from "../../readux/map-slice";
 import { ZOOM_MAP } from "../../constants/ZOOM_MAP";
-import { fetchTheRandom } from "../../readux/random-country";
-import { fetchTheCenter } from "../../readux/centering-theMap-slice";
 import { fetchCountryInfo } from "../../readux/country-info";
 
 const HomePage = () => {

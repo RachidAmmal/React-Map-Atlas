@@ -3,7 +3,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 import "./Map.css";
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { useDispatch, useSelector } from "react-redux";
 
 import LocationMarker from "./LocationMarker";
@@ -47,13 +47,6 @@ const MapCard = () => {
       prevDataNameRef.current = data1.name.common;
     }
   }, [data?.name, data1?.name?.common]);
-
-  let DefaultIcon = L.icon({
-    iconUrl: "/images/icons/marker-icon.png",
-    iconSize: [25, 41],
-    
-  });
-  L.Marker.prototype.options.icon = DefaultIcon;
 
   return (
     <div>
