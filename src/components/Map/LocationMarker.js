@@ -14,6 +14,15 @@ const LocationMarker = ({ loc, zoom, onMapClick, data }) => {
 
   const {center} = useSelector((state) => state.center);
 
+  useEffect(() => {
+    if (center?.lat !== 45 && center?.lng !== 15) {
+      map.setView([center?.lat, center?.lng], zoom);
+  }
+    //else if (loc?.lat !== 0 && loc?.lng !== 0) {
+    //   map.setView([loc.lat, loc.lng], zoom);
+    // } 
+  }, [center?.lat, center?.lng, map, zoom]);
+
   useMapEvents({
     click: (e) => {
       const { lat, lng } = e.latlng;
@@ -33,15 +42,6 @@ const LocationMarker = ({ loc, zoom, onMapClick, data }) => {
       dispatch(fetchTheCenter(countryName));
     }
   });
-
-  useEffect(() => {
-    if (center?.lat !== 45 && center?.lng !== 15) {
-      map.setView([center?.lat, center?.lng], zoom);
-  }
-    //else if (loc?.lat !== 0 && loc?.lng !== 0) {
-    //   map.setView([loc.lat, loc.lng], zoom);
-    // } 
-  }, [center?.lat, center?.lng, map, zoom]);
 
   return null;
 };

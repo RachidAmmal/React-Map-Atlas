@@ -65,12 +65,12 @@
   margin-left: 5px;
 }
 
-/* التحميل */
 .loading-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  margin-top: 200px;
 }
 
 .error-text {
