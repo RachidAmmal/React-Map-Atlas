@@ -26,7 +26,6 @@ const SearchBar = () => {
           );
         })
         .sort((a, b) => {
-          // تحويل القيم إلى lowercase للمقارنة الصحيحة
           const aCommon = Array.isArray(a.common)
             ? a.common[0].toLowerCase()
             : a.common.toLowerCase();
@@ -34,13 +33,12 @@ const SearchBar = () => {
             ? b.common[0].toLowerCase()
             : b.common.toLowerCase();
 
-          // الأولوية للكلمات التي تبدأ بالحروف المكتوبة
           if (aCommon.startsWith(value) && !bCommon.startsWith(value))
             return -1;
           if (!aCommon.startsWith(value) && bCommon.startsWith(value)) return 1;
-          return aCommon.localeCompare(bCommon); // ترتيب أبجدي
+          return aCommon.localeCompare(bCommon); 
         })
-        .slice(0, 10); // الحد الأقصى 10 اقتراحات
+        .slice(0, 10); 
 
       setDisplayingSugg(false);
       setFilteredSuggestions(filtered);

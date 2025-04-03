@@ -40,6 +40,11 @@
     -webkit-animation: border-countries 1s 1;
 }
 
+.borderCountriesEnd {
+  animation: border-countries-end 0.5s 1;
+  -webkit-animation: border-countries-end 0.5s 1;
+}
+
 .countryFlag {
     width: 100%;
     height: 80px;
@@ -70,6 +75,25 @@
     -moz-transform: translateY(0);
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
+}
+}
+
+@keyframes border-countries-end {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+}
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+    -webkit-transform: translateY(-50px);
+    -moz-transform: translateY(-50px);
+    -ms-transform: translateY(-50px);
+    -o-transform: translateY(-50px);
 }
 }
 

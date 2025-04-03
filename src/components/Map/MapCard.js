@@ -65,18 +65,7 @@ const MapCard = () => {
         )}
         {m || clickedLocation ? (
           <div position={position}>
-            {data?.name && data.name !== prevDataNameRef.current ? (
-              <AutoOpenPopup
-                position={position}
-                name={
-                  loading
-                    ? "Loading..."
-                    : error
-                    ? `Error: ${error}`
-                    : `${data.name} ${data.code ?? ""}`
-                }
-              />
-            ) : data1?.name?.common ? (
+            {data1?.name?.common ? (
               <AutoOpenPopup
                 position={position1}
                 name={
@@ -85,6 +74,17 @@ const MapCard = () => {
                     : error
                     ? `Error: ${error}`
                     : data1.name.common
+                }
+              />
+            ) : data?.name && data.name !== prevDataNameRef.current ? (
+              <AutoOpenPopup
+                position={position}
+                name={
+                  loading
+                    ? "Loading..."
+                    : error
+                    ? `Error: ${error}`
+                    : `${data.name} ${data.code ?? ""}`
                 }
               />
             ) : <AutoOpenPopup position={position} name={country} />}
