@@ -76,21 +76,18 @@ form{
   color: #ffffff;
 }
 
-.links{
+.homeLinks{
   margin-top: 50px;
   width: 100%;
   display: flex;
   justify-content: space-around;
 }
 
-.link{
+.homeLink{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.link{
   position: relative;
   text-decoration: none;
   color: #ffffff;

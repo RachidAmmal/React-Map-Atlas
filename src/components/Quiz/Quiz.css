@@ -1,0 +1,155 @@
+.iconTitle9{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+/* خلفية الصفحة وتصميمها */
+.game-container {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f8ff;
+  padding: 20px;
+}
+
+/* تنسيق العنوان */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* تصميم شبكة المستويات */
+/* .levelsFlex {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+} */
+
+.levelsFlex {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* تصميم البطاقة */
+.level-card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 380px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  background-color: white;
+}
+
+.level-card:hover {
+  transform: scale(1.05);
+}
+
+/* الألوان الخاصة بالمستويات */
+.relaxed {
+  border-left: 5px solid #4caf50;
+  animation: quiz-lev 1s 1;
+  -webkit-animation: quiz-lev 1s 1;
+}
+
+.challenge {
+  border-left: 5px solid #ff9800;
+  animation: lev-quiz 1s 1;
+  -webkit-animation: lev-quiz 1s 1;
+}
+
+.hardcore {
+  border-left: 5px solid #f44336;
+  background-color: #ffebee;
+  animation: quiz-lev 1s 1;
+  -webkit-animation: quiz-lev 1s 1;
+}
+
+.bycontinent {
+  border-left: 5px solid #2196F3;
+  animation: lev-quiz 1s 1;
+  -webkit-animation: lev-quiz 1s 1;
+}
+
+/* تنسيق الأيقونة */
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* تنسيق التفاصيل */
+.details {
+  list-style: none;
+  padding: 0;
+}
+
+.details li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+/* زر العودة */
+.back-button {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.back-button:hover {
+  background-color: #d32f2f;
+}
+
+
+@keyframes quiz-lev {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+    -webkit-transform: translatey(50px);
+    -moz-transform: translatey(50px);
+    -ms-transform: translatey(50px);
+    -o-transform: translatey(50px);
+}
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translate(0);
+    -moz-transform: translate(0);
+    -ms-transform: translate(0);
+    -o-transform: translate(0);
+}
+}
+
+@keyframes lev-quiz {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+    -webkit-transform: translateY(-50px);
+    -moz-transform: translateY(-50px);
+    -ms-transform: translateY(-50px);
+    -o-transform: translateY(-50px);
+}
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translate(0);
+    -moz-transform: translate(0);
+    -ms-transform: translate(0);
+    -o-transform: translate(0);
+}
+}

@@ -59,20 +59,20 @@ const HomePage = () => {
             </button>
           </Link>
         </form>
-        <div className="links">
-          <Link to="/main" className="link">
+        <div className="homeLinks">
+          <Link to="/main" className="homeLink">
             <img className="icon" src="/images/icons/homepage.png" alt="" />
             <span>Main Page</span>
           </Link>
-          <Link to="/quiz" className="link">
+          <Link to="/quiz" className="homeLink">
             <img className="icon" src="/images/icons/quizzes.png" alt="" />
             <span>Quizzes</span>
           </Link>
-          <Link onClick={handleMyLocation} to="/main" className="link">
+          <Link onClick={handleMyLocation} to="/main" className="homeLink">
             <img className="icon" src="/images/icons/map.png" alt="" />
             <span>My Country</span>
           </Link>
-          <Link to="/about" className="link">
+          <Link to="/about" className="homeLink">
             <img className="icon" src="/images/icons/information1.png" alt="" />
             <span>About</span>
           </Link>

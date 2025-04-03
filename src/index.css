@@ -15,7 +15,7 @@
 
 body {
   background-color: rgb(184, 189, 190) !important; 
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
 /* body {
