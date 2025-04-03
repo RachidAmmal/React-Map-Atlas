@@ -36,9 +36,9 @@ const SearchBar = () => {
           if (aCommon.startsWith(value) && !bCommon.startsWith(value))
             return -1;
           if (!aCommon.startsWith(value) && bCommon.startsWith(value)) return 1;
-          return aCommon.localeCompare(bCommon); 
+          return aCommon.localeCompare(bCommon);
         })
-        .slice(0, 10); 
+        .slice(0, 10);
 
       setDisplayingSugg(false);
       setFilteredSuggestions(filtered);
@@ -78,21 +78,20 @@ const SearchBar = () => {
           type="text"
           placeholder="Search a Country"
         />
-        <button
-          onClick={handleSearchCountry}
-          disabled={countrySearch === ""}
-          className="button-search"
-          type="submit"
-        >
-          Search
-        </button>
+        <div className="searchButtons">
+          <button
+            onClick={handleSearchCountry}
+            disabled={countrySearch === ""}
+            className="button-search"
+            type="submit"
+          >
+            Search
+          </button>
 
-        <button
-          className="button-search"
-          type="submit"
-        >
-          Random
-        </button>
+          <button className="button-search" type="submit">
+            Random
+          </button>
+        </div>
       </form>
       {filteredSuggestions.length > 0 &&
         <ul className={`suggestions ${displayingSugg ? "displaySugg" : ""}`}>
