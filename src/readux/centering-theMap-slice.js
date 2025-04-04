@@ -12,8 +12,6 @@ export const fetchTheCenter = createAsyncThunk(
         }
       );
 
-      console.log("🔍 data API:", response.data);
-
       if (response.data.length > 0) {
         return {
           countryCenter: {

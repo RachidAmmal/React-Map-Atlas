@@ -16,7 +16,7 @@ const QuizLevels = ({ selectedLevel, setSelectedLevel }) => {
             onClick={() => setSelectedLevel(level)}
           >
             <div className="iconTitle9">
-              <div className="icon">{level.icon}</div>
+              <div className="icon-quiz">{level.icon}</div>
               <h2>{level.title}</h2>
             </div>
             <ul className="details">

@@ -9,7 +9,7 @@ import { IoHome } from "react-icons/io5";
 
 const NavBar = () => {
   const path = useLocation();
-  const pathIsHome = path.pathname === "/";
+  const pathIsMain = path.pathname === "/main";
 
   const [toggle, setToggle] = useState(false);
 
@@ -17,24 +17,26 @@ const NavBar = () => {
     <div className="nav-bar-container">
       <NavLink
         to="/"
-        className={`${"app-header"} ${pathIsHome && "app-header-is-home"}`}
+        className={`${"app-header"} ${pathIsMain && "app-header-display"}`}
       >
         <span className="header-part-1">Map</span>
         <span className="header-part-2">Atlas</span>
       </NavLink>
       <div className="nav-sub-container">
-        <SearchBar />
+        {pathIsMain && <SearchBar />}
       </div>
       <div onClick={() => setToggle(true)} className="barsMedia">
-        <i class="fa-solid fa-bars" />
+        <i className="fa-solid fa-bars" />
       </div>
       <div
         className={
-          toggle ? "navLinksMedia transformationNon" : "navLinksMedia transformationMedia"
+          toggle
+            ? "navLinksMedia transformationNon"
+            : "navLinksMedia transformationMedia"
         }
       >
         <div onClick={() => setToggle(false)} className="xMard">
-          <i class="fa-solid fa-x xMard" />
+          <i className="fa-solid fa-x xMard" />
         </div>
         <NavLink
           onClick={() => setToggle(false)}
