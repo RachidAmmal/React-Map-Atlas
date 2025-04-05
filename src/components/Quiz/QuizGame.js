@@ -9,6 +9,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [inputCountry, setinputCountry] = useState("");
+  const [flagAnimation, setflagAnimation] = useState("");
 
   const dispatch = useDispatch();
   const { status, countries, loading, error } = useSelector(
@@ -18,7 +19,8 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   const attempts = useSelector((state) => state.quiz.attempts);
 
   const [localCountries, setLocalCountries] = useState([]);
-  const [locaAttemts, setlocaAttemts] = useState();
+  const [locaAttemts, setlocaAttemts] = useState(0);
+  console.log(localCountries);
 
   const shuffle = (array) => {
     const copy = [...array];
@@ -72,34 +74,32 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   };
 
   const handleQuizCountry = () => {
-  const currentCountry = localCountries[currentIndex];
+    const currentCountry = localCountries[currentIndex];
 
-  if (
-    currentCountry?.name.toLowerCase() === inputCountry.toLowerCase()
-  ) {
-    const updatedCountries = localCountries.filter(
-      (m) => m.name.toLowerCase() !== inputCountry.toLowerCase()
-    );
-    setScore(score + 1);
-    setinputCountry("");
+    if (currentCountry?.name.toLowerCase() === inputCountry.toLowerCase()) {
+      const updatedCountries = localCountries.filter(
+        (m) => m.name.toLowerCase() !== inputCountry.toLowerCase()
+      );
+      setScore(score + 1);
+      setinputCountry("");
+      setflagAnimation("flag-img-animation")
 
-    setLocalCountries(updatedCountries);
-
-  } else {
-    setinputCountry("");
-    setlocaAttemts(locaAttemts - 1)
-  }
-};
+      setLocalCountries(updatedCountries);
+    } else {
+      setinputCountry("");
+      setlocaAttemts(locaAttemts - 1);
+    }
+  };
 
   useEffect(() => {
-  if (countries.length > 0) {
-    setLocalCountries(countries);
-    setCurrentIndex(0);
-    setScore(0);
-    setinputCountry("");
-    setlocaAttemts(attempts)
-  }
-}, [attempts, countries]);
+    if (countries.length > 0) {
+      setLocalCountries(countries);
+      setCurrentIndex(0);
+      setScore(0);
+      setinputCountry("");
+      setlocaAttemts(attempts);
+    }
+  }, [attempts, countries]);
 
   useEffect(() => {
     if (selectedLevel) {
@@ -126,12 +126,14 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   }
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % countries.length);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === localCountries.length - 1 ? localCountries.length - 1 : prevIndex + 1
+    );
   };
 
   const prevSlide = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + countries.length) % countries.length
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? 0 : prevIndex - 1
     );
   };
 
@@ -140,27 +142,55 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       <h2 className="hTitle">
         {selectedLevel?.icon} {selectedLevel?.title}
       </h2>
-      <button>zebbi</button>
       <div className="headerQuiz">
         <span className="duration">⏳ {duration}s</span>
         <button className="centerButtonQuiz">🚀 </button>
         <span className="attempts">💡 {locaAttemts}</span>
       </div>
       <div className="flagsSliderQuiz">
-        <button className="prevBtnQuiz" onClick={prevSlide}>
-          &#10094;
-        </button>
-        <div className="flag-slide">
+  <button className="prevBtnQuiz"  onClick={prevSlide}>
+    &#10094;
+  </button>
+
+  <div className="flag-slide-wrapper">
+    <div
+      className="flag-slider-inner"
+      style={{
+        
+        transform: `translateX(-${currentIndex * (100 / localCountries.length)}%)`,
+        transition: "transform 0.5s ease-in-out",
+        display: "flex",
+        width: `${localCountries.length * 100}%`
+      }}
+    >
+      {localCountries.map((ele, index) => (
+        <div
+          key={index}
+          style={{
+            width: `${100 / localCountries.length}%`,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
           <img
-            src={localCountries[currentIndex]?.flag}
-            alt={localCountries[currentIndex]?.name}
-            className="flag-img"
+            src={ele?.flag}
+            alt={ele?.name}
+            className={`flag-img ${flagAnimation}`}
+            style={{
+              width: "100%",
+              objectFit: "contain"
+            }}
           />
         </div>
-        <button className="nextBtnQuiz" onClick={nextSlide}>
-          &#10095;
-        </button>
-      </div>
+      ))}
+    </div>
+  </div>
+
+  <button className="nextBtnQuiz" onClick={nextSlide}>
+    &#10095;
+  </button>
+</div>
       <div className="inputQuizShi">
         <div className="lengthQuiz">
           {score}/{countries?.length}
@@ -172,7 +202,11 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
           type="text"
           placeholder="Enter the name of the country whose flag is above"
         />
-        <button disabled={inputCountry === "" && true} onClick={handleQuizCountry} className="checkTheCountry">
+        <button
+          disabled={inputCountry === "" && true}
+          onClick={handleQuizCountry}
+          className="checkTheCountry"
+        >
           Check the country name
         </button>
       </div>

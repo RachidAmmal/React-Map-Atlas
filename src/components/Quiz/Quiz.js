@@ -15,7 +15,7 @@ const Quiz = () => {
     <div>
       <NavBar />
       <div className="game-container">
-        {!selectedLevel && countries.length === 0
+        {!selectedLevel 
           ? <QuizLevels
               selectedLevel={selectedLevel}
               setSelectedLevel={setSelectedLevel}
