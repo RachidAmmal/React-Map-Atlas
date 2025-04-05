@@ -38,7 +38,6 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       );
       const randomCommonNames = shuffle(commonNames).slice(0, 15);
 
-      // Dispatch with logging
       dispatch(
         startQuizAsync({
           countryNames: randomCommonNames,
@@ -106,7 +105,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
     if (selectedLevel) {
       getQuizzes();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedLevel]);
 
   if (loading) {
