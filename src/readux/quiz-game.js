@@ -5,13 +5,12 @@ export const startQuizAsync = createAsyncThunk(
   "quiz/fetchCountriesByName",
   async ({ countryNames, mode }, thunkAPI) => {
     try {
-      // إعداد المدة والمحاولات حسب الوضع
       let duration = 0;
       let attempts = 0;
 
       if (mode === 1) {
         duration = 5 * 60;
-        attempts = Infinity;
+        attempts = 5;
       } else if (mode === 2) {
         duration = 10 * 60;
         attempts = 10;

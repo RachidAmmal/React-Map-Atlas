@@ -17,6 +17,9 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   const duration = useSelector((state) => state.quiz.duration);
   const attempts = useSelector((state) => state.quiz.attempts);
 
+  const [localCountries, setLocalCountries] = useState([]);
+  const [locaAttemts, setlocaAttemts] = useState();
+
   const shuffle = (array) => {
     const copy = [...array];
     for (let i = copy.length - 1; i > 0; i--) {
@@ -70,16 +73,34 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   };
 
   const handleQuizCountry = () => {
-    if (
-      countries[currentIndex]?.name.toLocaleLowerCase() ===
-      inputCountry.toLocaleLowerCase()
-    ) {
-      setScore(score + 1);
-      setinputCountry("");
-    } else {
-      setinputCountry("");
-    }
-  };
+  const currentCountry = localCountries[currentIndex];
+
+  if (
+    currentCountry?.name.toLowerCase() === inputCountry.toLowerCase()
+  ) {
+    const updatedCountries = localCountries.filter(
+      (m) => m.name.toLowerCase() !== inputCountry.toLowerCase()
+    );
+    setScore(score + 1);
+    setinputCountry("");
+
+    setLocalCountries(updatedCountries);
+
+  } else {
+    setinputCountry("");
+    setlocaAttemts(locaAttemts - 1)
+  }
+};
+
+  useEffect(() => {
+  if (countries.length > 0) {
+    setLocalCountries(countries);
+    setCurrentIndex(0);
+    setScore(0);
+    setinputCountry("");
+    setlocaAttemts(attempts)
+  }
+}, [attempts, countries]);
 
   useEffect(() => {
     if (selectedLevel) {
@@ -124,7 +145,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       <div className="headerQuiz">
         <span className="duration">⏳ {duration}s</span>
         <button className="centerButtonQuiz">🚀 </button>
-        <span className="attempts">💡 {attempts}</span>
+        <span className="attempts">💡 {locaAttemts}</span>
       </div>
       <div className="flagsSliderQuiz">
         <button className="prevBtnQuiz" onClick={prevSlide}>
@@ -132,8 +153,8 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
         </button>
         <div className="flag-slide">
           <img
-            src={countries[currentIndex]?.flag}
-            alt={countries[currentIndex]?.name}
+            src={localCountries[currentIndex]?.flag}
+            alt={localCountries[currentIndex]?.name}
             className="flag-img"
           />
         </div>
@@ -152,7 +173,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
           type="text"
           placeholder="Enter the name of the country whose flag is above"
         />
-        <button onClick={handleQuizCountry} className="checkTheCountry">
+        <button disabled={inputCountry === "" && true} onClick={handleQuizCountry} className="checkTheCountry">
           Check the country name
         </button>
       </div>
