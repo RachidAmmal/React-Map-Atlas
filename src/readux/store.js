@@ -5,6 +5,7 @@ import centerReducer from "./centering-theMap-slice";
 import randomSlice from "./random-country";
 import countryInfoSlice from "./country-info";
 import borderSlice from "./bordering-countries";
+import quizReducer from "./quiz-game";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     center: centerReducer,
     random: randomSlice,
     countryInfo: countryInfoSlice,
-    border: borderSlice
+    border: borderSlice,
+    quiz: quizReducer
   }
 });

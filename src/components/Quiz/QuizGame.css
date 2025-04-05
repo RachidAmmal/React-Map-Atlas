@@ -1,0 +1,150 @@
+.quizContainer {
+  width: 800px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.headerQuiz {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1485d5;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.duration,
+.attempts {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.hTitle{
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.centerButtonQuiz {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  font-size: 22px;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.centerButtonQuiz:hover {
+  background-color: #f1f1f1;
+}
+
+.flagsSliderQuiz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.flag-slide {
+  text-align: center;
+  width: 450px;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  background-color: #f4f4f4;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: 1s !important;
+  -webkit-transition: 1s !important;
+  -moz-transition: 1s !important;
+  -ms-transition: 1s !important;
+  -o-transition: 1s !important;
+}
+
+.flag-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 3px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 1s !important;
+  -webkit-transition: 1s !important;
+  -moz-transition: 1s !important;
+  -ms-transition: 1s !important;
+  -o-transition: 1s !important;
+}
+
+.prevBtnQuiz,
+.nextBtnQuiz {
+  background-color: #1485d5;
+  width: 60px;
+  height: 60px;
+  color: white;
+  font-size: 32px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prevBtnQuiz:hover,
+.nextBtnQuiz:hover {
+  background-color: #0d6aad;
+}
+
+.prevBtnQuiz {
+  margin-right: 15px;
+}
+
+.nextBtnQuiz {
+  margin-left: 15px;
+}
+
+.inputQuiz {
+  margin: 0px auto;
+  padding: 10px 15px;
+  width: 50%;
+  border: 3px solid black;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.inputQuizShi{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lengthQuiz{
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.inputQuiz:focus {
+  outline: none;
+  border: 3px solid #1485d5;
+}
+
+.checkTheCountry{
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 12px;
+  width: 50%;
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+}

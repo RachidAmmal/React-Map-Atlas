@@ -11,15 +11,17 @@ const Quiz = () => {
     <div>
       <NavBar />
       <div className="game-container">
-        {!selectedLevel
-          ? <QuizLevels
-              selectedLevel={selectedLevel}
-              setSelectedLevel={setSelectedLevel}
-            />
-          : <QuizGame
-              selectedLevel={selectedLevel}
-              setSelectedLevel={setSelectedLevel}
-            />}
+        {!selectedLevel ? (
+          <QuizLevels
+            selectedLevel={selectedLevel}
+            setSelectedLevel={setSelectedLevel}
+          />
+        ) : (
+          <QuizGame
+            selectedLevel={selectedLevel}
+            setSelectedLevel={setSelectedLevel}
+          />
+        )}
       </div>
     </div>
   );
