@@ -105,8 +105,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
     if (selectedLevel) {
       getQuizzes();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedLevel]);
+  }, []);
 
   if (loading) {
     return (
@@ -141,6 +140,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       <h2 className="hTitle">
         {selectedLevel?.icon} {selectedLevel?.title}
       </h2>
+      <button>zebbi</button>
       <div className="headerQuiz">
         <span className="duration">⏳ {duration}s</span>
         <button className="centerButtonQuiz">🚀 </button>
