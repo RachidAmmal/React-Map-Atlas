@@ -11,7 +11,7 @@ export const startQuizAsync = createAsyncThunk(
       if (mode === 1) {
         duration = 5 * 60;
         attempts = 5;
-      } else if (mode === 2) {
+      } else if (mode === 2 || mode === 4) {
         duration = 10 * 60;
         attempts = 10;
       } else if (mode === 3) {
@@ -19,7 +19,6 @@ export const startQuizAsync = createAsyncThunk(
         attempts = 10;
       }
 
-      // جلب بيانات الدول حسب الاسم
       const countriesData = await Promise.all(
         countryNames.map(async name => {
           const response = await axios.get(
@@ -36,7 +35,6 @@ export const startQuizAsync = createAsyncThunk(
         })
       );
 
-      // إرجاع كل القيم المطلوبة
       return {
         countries: countriesData,
         duration,

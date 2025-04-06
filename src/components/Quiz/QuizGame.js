@@ -4,12 +4,16 @@ import COUNTRY_NAMES_LIST from "../../constants/COUNTRY_NAMES_LIST";
 import { startQuizAsync } from "../../readux/quiz-game";
 import { OrbitProgress } from "react-loading-indicators";
 import "./QuizGame.css";
+import QuizEnd from "./QuizEnd";
 
 const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [inputCountry, setinputCountry] = useState("");
   const [flagAnimation, setflagAnimation] = useState("");
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [isRunning, setIsRunning] = useState(false);
 
   const dispatch = useDispatch();
   const { status, countries, loading, error } = useSelector(
@@ -76,13 +80,15 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   const handleQuizCountry = () => {
     const currentCountry = localCountries[currentIndex];
 
+    setIsRunning(true);
+
     if (currentCountry?.name.toLowerCase() === inputCountry.toLowerCase()) {
       const updatedCountries = localCountries.filter(
         (m) => m.name.toLowerCase() !== inputCountry.toLowerCase()
       );
       setScore(score + 1);
       setinputCountry("");
-      setflagAnimation("flag-img-animation")
+      setflagAnimation("flag-img-animation");
 
       setLocalCountries(updatedCountries);
     } else {
@@ -98,14 +104,35 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       setScore(0);
       setinputCountry("");
       setlocaAttemts(attempts);
+      setTimeLeft(duration);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attempts, countries]);
 
   useEffect(() => {
     if (selectedLevel) {
       getQuizzes();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (!isRunning || timeLeft <= 0) {
+      if (timeLeft <= 0 && isRunning) {
+        setGameOver(true);
+      }
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isRunning, timeLeft]);
+
+  const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+  const seconds = String(timeLeft % 60).padStart(2, "0");
 
   if (loading) {
     return (
@@ -126,15 +153,17 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   }
 
   const nextSlide = () => {
+    setIsRunning(true);
     setCurrentIndex((prevIndex) =>
-      prevIndex === localCountries.length - 1 ? localCountries.length - 1 : prevIndex + 1
+      prevIndex === localCountries.length - 1
+        ? localCountries.length - 1
+        : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? 0 : prevIndex - 1
-    );
+    setIsRunning(true);
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? 0 : prevIndex - 1));
   };
 
   return (
@@ -143,54 +172,57 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
         {selectedLevel?.icon} {selectedLevel?.title}
       </h2>
       <div className="headerQuiz">
-        <span className="duration">⏳ {duration}s</span>
-        <button className="centerButtonQuiz">🚀 </button>
+        <span className="duration">
+          ⏳ {minutes}:{seconds}
+        </span>
+        <button onClick={()=>setGameOver(true)} className="centerButtonQuiz">🚀 </button>
         <span className="attempts">💡 {locaAttemts}</span>
       </div>
       <div className="flagsSliderQuiz">
-  <button className="prevBtnQuiz"  onClick={prevSlide}>
-    &#10094;
-  </button>
+        <button className="prevBtnQuiz" onClick={prevSlide}>
+          &#10094;
+        </button>
 
-  <div className="flag-slide-wrapper">
-    <div
-      className="flag-slider-inner"
-      style={{
-        
-        transform: `translateX(-${currentIndex * (100 / localCountries.length)}%)`,
-        transition: "transform 0.5s ease-in-out",
-        display: "flex",
-        width: `${localCountries.length * 100}%`
-      }}
-    >
-      {localCountries.map((ele, index) => (
-        <div
-          key={index}
-          style={{
-            width: `${100 / localCountries.length}%`,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          <img
-            src={ele?.flag}
-            alt={ele?.name}
-            className={`flag-img ${flagAnimation}`}
+        <div className="flag-slide-wrapper">
+          <div
+            className="flag-slider-inner"
             style={{
-              width: "100%",
-              objectFit: "contain"
+              transform: `translateX(-${
+                currentIndex * (100 / localCountries.length)
+              }%)`,
+              transition: "transform 0.5s ease-in-out",
+              display: "flex",
+              width: `${localCountries.length * 100}%`
             }}
-          />
+          >
+            {localCountries.map((ele, index) => (
+              <div
+                key={index}
+                style={{
+                  width: `${100 / localCountries.length}%`,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                <img
+                  src={ele?.flag}
+                  alt={ele?.name}
+                  className={`flag-img ${flagAnimation}`}
+                  style={{
+                    width: "100%",
+                    objectFit: "contain"
+                  }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
 
-  <button className="nextBtnQuiz" onClick={nextSlide}>
-    &#10095;
-  </button>
-</div>
+        <button className="nextBtnQuiz" onClick={nextSlide}>
+          &#10095;
+        </button>
+      </div>
       <div className="inputQuizShi">
         <div className="lengthQuiz">
           {score}/{countries?.length}
@@ -210,6 +242,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
           Check the country name
         </button>
       </div>
+      {gameOver && <QuizEnd/>}
     </div>
   );
 };
