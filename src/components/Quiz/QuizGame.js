@@ -56,7 +56,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       const commonNames = unCountries.map((country) =>
         Array.isArray(country.common) ? country.common[0] : country.common
       );
-      const randomCommonNames = shuffle(commonNames).slice(0, 25);
+      const randomCommonNames = shuffle(commonNames).slice(0, 30);
       dispatch(
         startQuizAsync({
           countryNames: randomCommonNames,
@@ -68,7 +68,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       const commonNames = unCountries.map((country) =>
         Array.isArray(country.common) ? country.common[0] : country.common
       );
-      const randomCommonNames = shuffle(commonNames).slice(0, 35);
+      const randomCommonNames = shuffle(commonNames).slice(0, 60);
       dispatch(
         startQuizAsync({
           countryNames: randomCommonNames,
@@ -202,7 +202,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
         <span className="attempts">💡 {locaAttemts}</span>
       </div>
       <div className="flagsSliderQuiz">
-        <button className="prevBtnQuiz" onClick={prevSlide}>
+        <button style={{opacity: currentIndex === 0 ? "0" : "1"}} className="prevBtnQuiz" onClick={prevSlide}>
           &#10094;
         </button>
 
@@ -242,7 +242,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
           </div>
         </div>
 
-        <button className="nextBtnQuiz" onClick={nextSlide}>
+        <button style={{opacity: currentIndex === localCountries.length - 1 ? "0" : "1"}} className="nextBtnQuiz" onClick={nextSlide}>
           &#10095;
         </button>
       </div>
