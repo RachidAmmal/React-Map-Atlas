@@ -1,9 +1,8 @@
 .QuizEnd{
-  padding: 20px;
+  padding: 15px 25px;
   border-radius: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  width: 280px;
-  cursor: pointer;
+  width: 320px;
   transition: transform 0.3s ease-in-out;
   background-color: white;
   animation: quiz-card-end 1s 1;
@@ -17,9 +16,10 @@
 
 .QuizEnd h1{
   text-align: center;
-  font-weight: 600;
+  font-weight: 700;
   color: brown;
-  margin: 25px 0;
+  margin-top: 10px;
+  margin-bottom: 25px;
 }
 
 .detailsCard{
@@ -35,6 +35,7 @@
 
 .tryAgain{
   text-align: center;
+  margin: 20px 0 10px 0;
 }
 
 .tryAgain button{

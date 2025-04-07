@@ -266,7 +266,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
         </button>
       </div>
           </div>
-        ) : <QuizEnd setSelectedLevel={setSelectedLevel} locaAttemts={locaAttemts} countries={countries?.length} score={score} selectedLevel={selectedLevel?.title}/>
+        ) : <QuizEnd minutes={minutes} seconds={seconds} setSelectedLevel={setSelectedLevel} locaAttemts={locaAttemts} countries={countries?.length} score={score} selectedLevel={selectedLevel?.title}/>
       }
     </>
   );
