@@ -2,6 +2,7 @@
   width: 800px;
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
+  
 }
 
 .headerQuiz {
@@ -107,13 +108,26 @@
 }
 
 .inputQuiz {
+  text-align: center;
+  font-weight: 600;
+  font-size: 17px;
   margin: 0px auto;
   padding: 10px 15px;
   width: 50%;
-  border: 3px solid black;
+  border: 4px solid black;
   border-radius: 8px;
   font-size: 16px;
   transition: border-color 0.3s ease;
+}
+
+.inputQuizErr{
+  animation: inputQuiz-err 1s 1;
+  -webkit-animation: inputQuiz-err 1s 1;
+}
+
+.inputQuizSuc{
+  animation: inputQuiz-suc 1s 1;
+  -webkit-animation: inputQuiz-suc 1s 1;
 }
 
 .inputQuizShi{
@@ -130,7 +144,7 @@
 
 .inputQuiz:focus {
   outline: none;
-  border: 3px solid #1485d5;
+  border: 4px solid #1485d5;
 }
 
 .checkTheCountry{
@@ -161,5 +175,35 @@
     -moz-transform: translateY(0px);
     -ms-transform: translateY(0px);
     -o-transform: translateY(0px);
+}
+}
+
+@keyframes inputQuiz-err {
+  0% {
+    border: 4px solid red;
+}
+  25% {
+    border: 4px solid red;
+}
+75% {
+    border: 4px solid red;
+}
+100% {
+    border: 3px solid black;
+}
+}
+
+@keyframes inputQuiz-suc {
+  0% {
+    border: 4px solid rgb(18, 190, 18);
+}
+  25% {
+    border: 4px solid rgb(18, 190, 18);
+}
+75% {
+    border: 4px solid rgb(18, 190, 18);
+}
+100% {
+    border: 4px solid black;
 }
 }

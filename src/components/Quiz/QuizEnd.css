@@ -1,0 +1,81 @@
+.QuizEnd{
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  width: 280px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  background-color: white;
+  animation: quiz-card-end 1s 1;
+  -webkit-animation: quiz-card-end 1s 1;
+  transform: translateY(-20px);
+  -webkit-transform: translateY(-20px);
+  -moz-transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  -o-transform: translateY(-20px);
+}
+
+.QuizEnd h1{
+  text-align: center;
+  font-weight: 600;
+  color: brown;
+  margin: 25px 0;
+}
+
+.detailsCard{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.contentCard{
+  font-weight: 400;
+}
+
+.tryAgain{
+  text-align: center;
+}
+
+.tryAgain button{
+  transition: 0.4s;
+  padding: 8px 15px;
+  background-color: var(--secondary-color);
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -ms-transition: 0.4s;
+  -o-transition: 0.4s;
+}
+
+.tryAgain button:hover{
+  background-color: var(--secondary-color-dark);
+}
+
+@keyframes quiz-card-end {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+    -webkit-transform: translateY(50px);
+    -moz-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    -o-transform: translateY(50px);
+}
+  100% {
+    opacity: 1;
+    transform: translateY(-20px);
+    -webkit-transform: translateY(-20px);
+    -moz-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+}
+}

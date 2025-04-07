@@ -112,18 +112,18 @@
   0% {
     opacity: 0;
     transform: translateY(50px);
-    -webkit-transform: translatey(50px);
-    -moz-transform: translatey(50px);
-    -ms-transform: translatey(50px);
-    -o-transform: translatey(50px);
+    -webkit-transform: translateY(50px);
+    -moz-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    -o-transform: translateY(50px);
 }
   100% {
     opacity: 1;
     transform: translateY(0);
-    -webkit-transform: translate(0);
-    -moz-transform: translate(0);
-    -ms-transform: translate(0);
-    -o-transform: translate(0);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
 }
 }
 

@@ -14,6 +14,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
+  const [isTrue, setisTrue] = useState("");
 
   const dispatch = useDispatch();
   const { status, countries, loading, error } = useSelector(
@@ -89,11 +90,20 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       setScore(score + 1);
       setinputCountry("");
       setflagAnimation("flag-img-animation");
-
+      
       setLocalCountries(updatedCountries);
+
+      setisTrue("inputQuizSuc")
+      setTimeout(() => {
+        setisTrue("")
+      }, 500);
     } else {
       setinputCountry("");
       setlocaAttemts(locaAttemts - 1);
+      setisTrue("inputQuizErr")
+      setTimeout(() => {
+        setisTrue("")
+      }, 500);
     }
   };
 
@@ -128,11 +138,17 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       setTimeLeft((prev) => prev - 1);
     }, 1000);
 
+    if(timer === 0){
+      setSelectedLevel(null)
+    }
+
     return () => clearInterval(timer);
   }, [isRunning, timeLeft]);
 
   const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
   const seconds = String(timeLeft % 60).padStart(2, "0");
+  const timeDown = minutes + ":" +seconds
+  console.log(timeDown)
 
   if (loading) {
     return (
@@ -167,15 +183,18 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   };
 
   return (
-    <div className="quizContainer">
-      <h2 className="hTitle">
+    <>
+      {
+        gameOver === false && locaAttemts > 0  ? (
+          <div className="quizContainer">
+          <h2 className="hTitle">
         {selectedLevel?.icon} {selectedLevel?.title}
       </h2>
       <div className="headerQuiz">
         <span className="duration">
           ⏳ {minutes}:{seconds}
         </span>
-        <button onClick={()=>setGameOver(true)} className="centerButtonQuiz">🚀 </button>
+        <button onClick={()=>setGameOver(true)} className="centerButtonQuiz">🚀</button>
         <span className="attempts">💡 {locaAttemts}</span>
       </div>
       <div className="flagsSliderQuiz">
@@ -230,9 +249,9 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
         <input
           value={inputCountry}
           onChange={(e) => setinputCountry(e.target.value)}
-          className="inputQuiz"
+          className={`inputQuiz ${isTrue}`}
           type="text"
-          placeholder="Enter the name of the country whose flag is above"
+          placeholder="Input your guess here!"
         />
         <button
           disabled={inputCountry === "" && true}
@@ -242,8 +261,10 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
           Check the country name
         </button>
       </div>
-      {gameOver && <QuizEnd/>}
-    </div>
+          </div>
+        ) : <QuizEnd setSelectedLevel={setSelectedLevel} locaAttemts={locaAttemts} countries={countries?.length} score={score} selectedLevel={selectedLevel?.title}/>
+      }
+    </>
   );
 };
 
