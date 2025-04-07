@@ -16,10 +16,10 @@ const Quiz = () => {
               selectedLevel={selectedLevel}
               setSelectedLevel={setSelectedLevel}
             />
-          :<QuizGame
+          : selectedLevel.id !== 'bycontinent' ? <QuizGame
               selectedLevel={selectedLevel}
               setSelectedLevel={setSelectedLevel}
-            />}
+            /> : <div>{selectedLevel}</div>}
       </div>
     </div>
   );

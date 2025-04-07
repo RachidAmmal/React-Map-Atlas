@@ -143,6 +143,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
     }
 
     return () => clearInterval(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isRunning, timeLeft]);
 
   const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
