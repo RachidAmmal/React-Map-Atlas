@@ -166,7 +166,10 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   }
 
   if (status === "failed") {
-    return <div>Failed to load quiz data: {error}</div>;
+    return (<div style={{textAlign: 'center'}}>
+      <div style={{fontSize: '19px', fontWeight: "600", color: "red"}}>Failed to load quiz data: {error}</div>
+      <button className="checkTheCountry" onClick={()=>setSelectedLevel(null)}>Try Again</button>
+    </div>);
   }
 
   const nextSlide = () => {
