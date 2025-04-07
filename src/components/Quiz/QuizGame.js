@@ -5,6 +5,7 @@ import { startQuizAsync } from "../../readux/quiz-game";
 import { OrbitProgress } from "react-loading-indicators";
 import "./QuizGame.css";
 import QuizEnd from "./QuizEnd";
+import { AFRICAN_COUNTRIES, AMERICAN_COUNTRIES, ASIAN_COUNTRIES, EUROPEAN_COUNTRIES, OCEANIA_COUNTRIES } from "../../constants/QUIZ_COUNTRIES";
 
 const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -44,6 +45,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
         Array.isArray(country.common) ? country.common[0] : country.common
       );
       const randomCommonNames = shuffle(commonNames).slice(0, 15);
+      console.log(randomCommonNames)
 
       dispatch(
         startQuizAsync({
@@ -73,6 +75,57 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
         startQuizAsync({
           countryNames: randomCommonNames,
           mode: selectedLevel.mode
+        })
+      );
+    } else if (selectedLevel?.name === "Africa") {
+      const conCountries = AFRICAN_COUNTRIES.map((country) => country.name);
+      
+      const randomCommonNames = conCountries;
+      dispatch(
+        startQuizAsync({
+          countryNames: randomCommonNames,
+          mode: 4
+        })
+      );
+    }else if (selectedLevel?.name === "Europe") {
+      const conCountries = EUROPEAN_COUNTRIES.map((country) => country.name);
+      
+      const randomCommonNames = conCountries;
+      dispatch(
+        startQuizAsync({
+          countryNames: randomCommonNames,
+          mode: 4
+        })
+      );
+    }else if (selectedLevel?.name === "Asia") {
+      const conCountries = ASIAN_COUNTRIES.map((country) => country.name);
+      
+      const randomCommonNames = conCountries;
+      console.log(randomCommonNames)
+      dispatch(
+        startQuizAsync({
+          countryNames: randomCommonNames,
+          mode: 4
+        })
+      );
+    }else if (selectedLevel?.name === "America") {
+      const conCountries = AMERICAN_COUNTRIES.map((country) => country.name);
+      
+      const randomCommonNames = conCountries;
+      dispatch(
+        startQuizAsync({
+          countryNames: randomCommonNames,
+          mode: 4
+        })
+      );
+    }else if (selectedLevel?.name === "Oceania") {
+      const conCountries = OCEANIA_COUNTRIES.map((country) => country.name);
+      
+      const randomCommonNames = conCountries;
+      dispatch(
+        startQuizAsync({
+          countryNames: randomCommonNames,
+          mode: 4
         })
       );
     }

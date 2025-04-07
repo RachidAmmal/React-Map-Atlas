@@ -7,7 +7,7 @@ export const QUIZ_LEVELS = [
     details: [
       "🌍 Guess 15 Countries.",
       "🌍 You have 5 minutes.",
-      "🌍 You have unlimited lives."
+      "🌍 You have 5 lives."
     ],
     className: "relaxed"
   },
