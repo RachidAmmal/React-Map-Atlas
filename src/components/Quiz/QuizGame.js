@@ -96,14 +96,14 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       setisTrue("inputQuizSuc")
       setTimeout(() => {
         setisTrue("")
-      }, 500);
+      }, 1000);
     } else {
       setinputCountry("");
       setlocaAttemts(locaAttemts - 1);
       setisTrue("inputQuizErr")
       setTimeout(() => {
         setisTrue("")
-      }, 500);
+      }, 1000);
     }
   };
 
