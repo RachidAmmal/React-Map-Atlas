@@ -21,13 +21,9 @@ export const fetchTheRandom = createAsyncThunk(
         }
       );
 
-      console.log("🔍 data API:", response.data);
-
       if (response.data.length > 0) {
         const lat = parseFloat(response.data[0].lat);
         const lng = parseFloat(response.data[0].lon);
-
-        console.log("✅ Coordinates fetched:", lat, lng);
 
         return { countryRandom: { lat, lng }, country: commonName };
       } else {

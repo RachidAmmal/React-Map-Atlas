@@ -32,7 +32,6 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
 
   const [localCountries, setLocalCountries] = useState([]);
   const [locaAttemts, setlocaAttemts] = useState(0);
-  console.log(localCountries);
 
   const shuffle = (array) => {
     const copy = [...array];
