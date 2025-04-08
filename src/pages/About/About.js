@@ -54,7 +54,7 @@ const About = () => {
       </div>
 
       <div className="features-section">
-        <h2>Features</h2>
+        <h2>External Services</h2>
         <ul>
           <li>
             <a
