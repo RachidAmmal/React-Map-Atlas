@@ -15,7 +15,7 @@
   font-weight: bold;
 }
 
-.cardSubtitle{
+.cardSubtitle {
   margin: 25px 0;
   font-weight: 500;
   font-size: 1.1rem;
@@ -39,12 +39,12 @@
   height: 30px;
 }
 
-.item-description{
+.item-description {
   font-weight: 500;
   font-size: 1.1rem;
 }
 
-.item-title{
+.item-title {
   font-size: 1.6rem;
 }
 
@@ -66,9 +66,11 @@
     max-width: 90%;
     padding: 15px;
   }
+
   .card-title {
     font-size: 1.3rem;
   }
+
   .card-item {
     font-size: 0.9rem;
   }
@@ -79,9 +81,11 @@
     max-width: 95%;
     padding: 10px;
   }
+
   .card-title {
     font-size: 1.2rem;
   }
+
   .card-item {
     font-size: 0.85rem;
   }

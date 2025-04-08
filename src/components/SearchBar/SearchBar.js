@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./SearchBar.css";
 import { useDispatch } from "react-redux";
 import { fetchCountryInfo, showMySearch } from "../../readux/country-info";
@@ -93,7 +93,11 @@ const SearchBar = () => {
             Search
           </button>
 
-          <button onClick={handleRandom} className="button-search" type="submit">
+          <button
+            onClick={handleRandom}
+            className="button-search"
+            type="submit"
+          >
             Random
           </button>
         </div>

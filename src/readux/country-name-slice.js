@@ -2,42 +2,40 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { GEOCODE_API_KEY } from "../constants/API_KEYS";
 
-const initialState = { 
-  data: null, 
-  loading: false, 
-  error: null 
-}
+const initialState = {
+  data: null,
+  loading: false,
+  error: null
+};
 
 export const fetchCountry = createAsyncThunk(
   "country/fetchDetails",
   async (position, { getState, rejectWithValue }) => {
     try {
-
       const { lat, lng } = position;
 
       const response = await axios.get("https://api.geocodify.com/v2/reverse", {
         params: {
           api_key: GEOCODE_API_KEY,
           lat,
-          lng,
-        },
+          lng
+        }
       });
 
       const countryData = response.data?.response?.features[0]?.properties;
-      
+
       if (!countryData) throw new Error("No data found");
 
       return {
         name: countryData.country,
         code: countryData.country_code,
-        continent: countryData.continent,
+        continent: countryData.continent
       };
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
-
 
 const countrySlice = createSlice({
   name: "country",
@@ -57,7 +55,7 @@ const countrySlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       });
-  },
+  }
 });
 
 export default countrySlice.reducer;

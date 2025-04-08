@@ -7,7 +7,9 @@ const QuizLevels = ({ selectedLevel, setSelectedLevel }) => {
 
   return (
     <div className="levelsCont">
-      <h1 className="titleQuizPresentation">Guess Countries based on their flag!</h1>
+      <h1 className="titleQuizPresentation">
+        Guess Countries based on their flag!
+      </h1>
       <div className="levelsFlex">
         {levels.map(level =>
           <div

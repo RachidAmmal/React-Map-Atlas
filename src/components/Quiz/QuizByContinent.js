@@ -1,5 +1,5 @@
 import React from "react";
-import './QuizByContinent.css'
+import "./QuizByContinent.css";
 import { CONTINENTS } from "../../constants/QUIZ_CONTINENT";
 
 const QuizByContinent = ({ setSelectedLevel }) => {
@@ -10,7 +10,11 @@ const QuizByContinent = ({ setSelectedLevel }) => {
       <h1 className="quiz-title">Choose a Continent</h1>
       <div className="continent-grid">
         {continents.map(continent =>
-          <div onClick={()=>setSelectedLevel(continent)} key={continent.id} className="continent-card">
+          <div
+            onClick={() => setSelectedLevel(continent)}
+            key={continent.id}
+            className="continent-card"
+          >
             <img
               src={continent.image}
               alt={continent.name}

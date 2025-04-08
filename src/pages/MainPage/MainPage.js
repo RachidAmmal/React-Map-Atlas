@@ -56,29 +56,32 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    handleCountryInfo()
+    handleCountryInfo();
   }, [data, countryName, searching, dispatch, handleCountryInfo]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-    handleMyLocationRand2();
-  }, 300); 
+      handleMyLocationRand2();
+    }, 300);
 
-  return () => clearTimeout(timeout);
+    return () => clearTimeout(timeout);
   }, [random, dispatch, handleMyLocationRand2]);
 
   useEffect(() => {
     dispatch(fetchTheCenter(countryName));
-  }, [countryName, dispatch])
+  }, [countryName, dispatch]);
 
   return (
     <div className="cont">
       <NavBar />
       <div className="mainCard">
-        <Card mapInfo={<CountryDetails countryName={countryName}/>} card="card-c card1" />
+        <Card
+          mapInfo={<CountryDetails countryName={countryName} />}
+          card="card-c card1"
+        />
         <Card mapInfo={<MapCard />} card="card-c card2" />
       </div>
-      <BordersCountries/>
+      <BordersCountries />
     </div>
   );
 };

@@ -8,7 +8,7 @@ export const fetchCountryInfo = createAsyncThunk(
   async (countryName, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${API_URL}${countryName}`);
-      return response.data[0]; 
+      return response.data[0];
     } catch (error) {
       return rejectWithValue(error.response?.data || "Failed to fetch country");
     }
@@ -42,7 +42,7 @@ const countryInfoSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       });
-  },
+  }
 });
 
 export const { showMySearch } = countryInfoSlice.actions;

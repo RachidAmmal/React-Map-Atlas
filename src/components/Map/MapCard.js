@@ -23,7 +23,7 @@ const MapCard = () => {
 
   const data1 = useSelector((state) => state.countryInfo.data);
 
-  const {center} = useSelector((state) => state.center);
+  const { center } = useSelector((state) => state.center);
 
   const [clickedLocation, setClickedLocation] = useState(clickedLocationMap);
 
@@ -87,7 +87,9 @@ const MapCard = () => {
                     : `${data.name} ${data.code ?? ""}`
                 }
               />
-            ) : <AutoOpenPopup position={position} name={country} />}
+            ) : (
+              <AutoOpenPopup position={position} name={country} />
+            )}
           </div>
         ) : null}
       </MapContainer>

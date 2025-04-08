@@ -5,7 +5,13 @@ import { startQuizAsync } from "../../readux/quiz-game";
 import { OrbitProgress } from "react-loading-indicators";
 import "./QuizGame.css";
 import QuizEnd from "./QuizEnd";
-import { AFRICAN_COUNTRIES, AMERICAN_COUNTRIES, ASIAN_COUNTRIES, EUROPEAN_COUNTRIES, OCEANIA_COUNTRIES } from "../../constants/QUIZ_COUNTRIES";
+import {
+  AFRICAN_COUNTRIES,
+  AMERICAN_COUNTRIES,
+  ASIAN_COUNTRIES,
+  EUROPEAN_COUNTRIES,
+  OCEANIA_COUNTRIES
+} from "../../constants/QUIZ_COUNTRIES";
 
 const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,7 +51,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
         Array.isArray(country.common) ? country.common[0] : country.common
       );
       const randomCommonNames = shuffle(commonNames).slice(0, 15);
-      console.log(randomCommonNames)
+      console.log(randomCommonNames);
 
       dispatch(
         startQuizAsync({
@@ -79,7 +85,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       );
     } else if (selectedLevel?.name === "Africa") {
       const conCountries = AFRICAN_COUNTRIES.map((country) => country.name);
-      
+
       const randomCommonNames = conCountries;
       dispatch(
         startQuizAsync({
@@ -87,9 +93,9 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
           mode: 4
         })
       );
-    }else if (selectedLevel?.name === "Europe") {
+    } else if (selectedLevel?.name === "Europe") {
       const conCountries = EUROPEAN_COUNTRIES.map((country) => country.name);
-      
+
       const randomCommonNames = conCountries;
       dispatch(
         startQuizAsync({
@@ -97,20 +103,20 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
           mode: 4
         })
       );
-    }else if (selectedLevel?.name === "Asia") {
+    } else if (selectedLevel?.name === "Asia") {
       const conCountries = ASIAN_COUNTRIES.map((country) => country.name);
-      
+
       const randomCommonNames = conCountries;
-      console.log(randomCommonNames)
+      console.log(randomCommonNames);
       dispatch(
         startQuizAsync({
           countryNames: randomCommonNames,
           mode: 4
         })
       );
-    }else if (selectedLevel?.name === "America") {
+    } else if (selectedLevel?.name === "America") {
       const conCountries = AMERICAN_COUNTRIES.map((country) => country.name);
-      
+
       const randomCommonNames = conCountries;
       dispatch(
         startQuizAsync({
@@ -118,9 +124,9 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
           mode: 4
         })
       );
-    }else if (selectedLevel?.name === "Oceania") {
+    } else if (selectedLevel?.name === "Oceania") {
       const conCountries = OCEANIA_COUNTRIES.map((country) => country.name);
-      
+
       const randomCommonNames = conCountries;
       dispatch(
         startQuizAsync({
@@ -143,19 +149,19 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       setScore(score + 1);
       setinputCountry("");
       setflagAnimation("flag-img-animation");
-      
+
       setLocalCountries(updatedCountries);
 
-      setisTrue("inputQuizSuc")
+      setisTrue("inputQuizSuc");
       setTimeout(() => {
-        setisTrue("")
+        setisTrue("");
       }, 1000);
     } else {
       setinputCountry("");
       setlocaAttemts(locaAttemts - 1);
-      setisTrue("inputQuizErr")
+      setisTrue("inputQuizErr");
       setTimeout(() => {
-        setisTrue("")
+        setisTrue("");
       }, 1000);
     }
   };
@@ -169,7 +175,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       setlocaAttemts(attempts);
       setTimeLeft(duration);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attempts, countries]);
 
   useEffect(() => {
@@ -191,18 +197,18 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
       setTimeLeft((prev) => prev - 1);
     }, 1000);
 
-    if(timer === 0){
-      setSelectedLevel(null)
+    if (timer === 0) {
+      setSelectedLevel(null);
     }
 
     return () => clearInterval(timer);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isRunning, timeLeft]);
 
   const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
   const seconds = String(timeLeft % 60).padStart(2, "0");
-  const timeDown = minutes + ":" +seconds
-  console.log(timeDown)
+  const timeDown = minutes + ":" + seconds;
+  console.log(timeDown);
 
   if (loading) {
     return (
@@ -219,10 +225,19 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
   }
 
   if (status === "failed") {
-    return (<div style={{textAlign: 'center'}}>
-      <div style={{fontSize: '19px', fontWeight: "600", color: "red"}}>Failed to load quiz data: {error}</div>
-      <button className="checkTheCountry" onClick={()=>setSelectedLevel(null)}>Try Again</button>
-    </div>);
+    return (
+      <div style={{ textAlign: "center" }}>
+        <div style={{ fontSize: "19px", fontWeight: "600", color: "red" }}>
+          Failed to load quiz data: {error}
+        </div>
+        <button
+          className="checkTheCountry"
+          onClick={() => setSelectedLevel(null)}
+        >
+          Try Again
+        </button>
+      </div>
+    );
   }
 
   const nextSlide = () => {
@@ -241,86 +256,109 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
 
   return (
     <>
-      {
-        gameOver === false && locaAttemts > 0  ? (
-          <div className="quizContainer">
+      {gameOver === false && locaAttemts > 0 ? (
+        <div className="quizContainer">
           <h2 className="hTitle">
-        {selectedLevel?.icon} {selectedLevel?.title}
-      </h2>
-      <div className="headerQuiz">
-        <span className="duration">
-          ⏳ {minutes}:{seconds}
-        </span>
-        <button onClick={()=>setGameOver(true)} className="centerButtonQuiz">🚀</button>
-        <span className="attempts">💡 {locaAttemts}</span>
-      </div>
-      <div className="flagsSliderQuiz">
-        <button style={{opacity: currentIndex === 0 ? "0" : "1"}} className="prevBtnQuiz" onClick={prevSlide}>
-          &#10094;
-        </button>
+            {selectedLevel?.icon} {selectedLevel?.title}
+          </h2>
+          <div className="headerQuiz">
+            <span className="duration">
+              ⏳ {minutes}:{seconds}
+            </span>
+            <button
+              onClick={() => setGameOver(true)}
+              className="centerButtonQuiz"
+            >
+              🚀
+            </button>
+            <span className="attempts">💡 {locaAttemts}</span>
+          </div>
+          <div className="flagsSliderQuiz">
+            <button
+              style={{ opacity: currentIndex === 0 ? "0" : "1" }}
+              className="prevBtnQuiz"
+              onClick={prevSlide}
+            >
+              &#10094;
+            </button>
 
-        <div className="flag-slide-wrapper">
-          <div
-            className="flag-slider-inner"
-            style={{
-              transform: `translateX(-${
-                currentIndex * (100 / localCountries.length)
-              }%)`,
-              transition: "transform 0.5s ease-in-out",
-              display: "flex",
-              width: `${localCountries.length * 100}%`
-            }}
-          >
-            {localCountries.map((ele, index) => (
+            <div className="flag-slide-wrapper">
               <div
-                key={index}
+                className="flag-slider-inner"
                 style={{
-                  width: `${100 / localCountries.length}%`,
+                  transform: `translateX(-${
+                    currentIndex * (100 / localCountries.length)
+                  }%)`,
+                  transition: "transform 0.5s ease-in-out",
                   display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center"
+                  width: `${localCountries.length * 100}%`
                 }}
               >
-                <img
-                  src={ele?.flag}
-                  alt={ele?.name}
-                  className={`flag-img ${flagAnimation}`}
-                  style={{
-                    width: "100%",
-                    objectFit: "contain"
-                  }}
-                />
+                {localCountries.map((ele, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      width: `${100 / localCountries.length}%`,
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center"
+                    }}
+                  >
+                    <img
+                      src={ele?.flag}
+                      alt={ele?.name}
+                      className={`flag-img ${flagAnimation}`}
+                      style={{
+                        width: "100%",
+                        objectFit: "contain"
+                      }}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        <button style={{opacity: currentIndex === localCountries.length - 1 ? "0" : "1"}} className="nextBtnQuiz" onClick={nextSlide}>
-          &#10095;
-        </button>
-      </div>
-      <div className="inputQuizShi">
-        <div className="lengthQuiz">
-          {score}/{countries?.length}
-        </div>
-        <input
-          value={inputCountry}
-          onChange={(e) => setinputCountry(e.target.value)}
-          className={`inputQuiz ${isTrue}`}
-          type="text"
-          placeholder="Input your guess here!"
-        />
-        <button
-          disabled={inputCountry === "" && true}
-          onClick={handleQuizCountry}
-          className="checkTheCountry"
-        >
-          Check the country name
-        </button>
-      </div>
+            <button
+              style={{
+                opacity: currentIndex === localCountries.length - 1 ? "0" : "1"
+              }}
+              className="nextBtnQuiz"
+              onClick={nextSlide}
+            >
+              &#10095;
+            </button>
           </div>
-        ) : <QuizEnd minutes={minutes} seconds={seconds} setSelectedLevel={setSelectedLevel} locaAttemts={locaAttemts} countries={countries?.length} score={score} selectedLevel={selectedLevel?.title}/>
-      }
+          <div className="inputQuizShi">
+            <div className="lengthQuiz">
+              {score}/{countries?.length}
+            </div>
+            <input
+              value={inputCountry}
+              onChange={(e) => setinputCountry(e.target.value)}
+              className={`inputQuiz ${isTrue}`}
+              type="text"
+              placeholder="Input your guess here!"
+            />
+            <button
+              disabled={inputCountry === "" && true}
+              onClick={handleQuizCountry}
+              className="checkTheCountry"
+            >
+              Check the country name
+            </button>
+          </div>
+        </div>
+      ) : (
+        <QuizEnd
+          minutes={minutes}
+          seconds={seconds}
+          setSelectedLevel={setSelectedLevel}
+          locaAttemts={locaAttemts}
+          countries={countries?.length}
+          score={score}
+          selectedLevel={selectedLevel?.title}
+        />
+      )}
     </>
   );
 };

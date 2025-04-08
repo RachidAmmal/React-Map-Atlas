@@ -3,7 +3,7 @@
   margin: 10px 0;
   width: 49%;
   background-color: white;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border-radius: 6px !important;
   -webkit-border-radius: 6px !important;
   -moz-border-radius: 6px !important;
@@ -11,12 +11,12 @@
   -o-border-radius: 6px !important;
 }
 
-.card1{
+.card1 {
   animation: map-fade-in 1s 1;
   -webkit-animation: map-fade-in 1s 1;
 }
 
-.card2{
+.card2 {
   animation: map-fade-in-two 1s 1;
   -webkit-animation: map-fade-in-two 1s 1;
 }
@@ -29,7 +29,8 @@
     -moz-transform: translate(-50px);
     -ms-transform: translate(-50px);
     -o-transform: translate(-50px);
-}
+  }
+
   100% {
     opacity: 1;
     transform: translate(0);
@@ -37,7 +38,7 @@
     -moz-transform: translate(0);
     -ms-transform: translate(0);
     -o-transform: translate(0);
-}
+  }
 }
 
 @keyframes map-fade-in-two {
@@ -48,7 +49,8 @@
     -moz-transform: translate(50px);
     -ms-transform: translate(50px);
     -o-transform: translate(50px);
-}
+  }
+
   100% {
     opacity: 1;
     transform: translate(0);
@@ -56,18 +58,18 @@
     -moz-transform: translate(0);
     -ms-transform: translate(0);
     -o-transform: translate(0);
-}
-}
-
-@media (min-width: 900px) and (max-width: 1015px){
-  .card-c {
-  width: 47%;
-  margin-top: 10;
-}
+  }
 }
 
-@media (max-width: 899px){
+@media (min-width: 900px) and (max-width: 1015px) {
   .card-c {
-  width: 93%;
+    width: 47%;
+    margin-top: 10;
+  }
 }
+
+@media (max-width: 899px) {
+  .card-c {
+    width: 93%;
+  }
 }

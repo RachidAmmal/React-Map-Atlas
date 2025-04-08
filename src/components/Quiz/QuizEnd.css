@@ -1,7 +1,7 @@
-.QuizEnd{
+.QuizEnd {
   padding: 15px 25px;
   border-radius: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   width: 320px;
   transition: transform 0.3s ease-in-out;
   background-color: white;
@@ -14,7 +14,7 @@
   -o-transform: translateY(-20px);
 }
 
-.QuizEnd h1{
+.QuizEnd h1 {
   text-align: center;
   font-weight: 700;
   color: brown;
@@ -22,23 +22,23 @@
   margin-bottom: 25px;
 }
 
-.detailsCard{
+.detailsCard {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 15px 0;
 }
 
-.contentCard{
+.contentCard {
   font-weight: 400;
 }
 
-.tryAgain{
+.tryAgain {
   text-align: center;
   margin: 20px 0 10px 0;
 }
 
-.tryAgain button{
+.tryAgain button {
   transition: 0.4s;
   padding: 8px 15px;
   background-color: var(--secondary-color);
@@ -58,7 +58,7 @@
   -o-transition: 0.4s;
 }
 
-.tryAgain button:hover{
+.tryAgain button:hover {
   background-color: var(--secondary-color-dark);
 }
 
@@ -70,7 +70,8 @@
     -moz-transform: translateY(50px);
     -ms-transform: translateY(50px);
     -o-transform: translateY(50px);
-}
+  }
+
   100% {
     opacity: 1;
     transform: translateY(-20px);
@@ -78,5 +79,5 @@
     -moz-transform: translateY(-20px);
     -ms-transform: translateY(-20px);
     -o-transform: translateY(-20px);
-}
+  }
 }

@@ -3,14 +3,13 @@ import { MapPin } from "lucide-react";
 import "./Information.css";
 
 const Information = () => {
-  return <div className="">
+  return (
+    <div className="">
       <div className="cardInfo">
-        <h2 className="cardTitle">
-          🤓 Discover the World at Your Fingertips!
-        </h2>
+        <h2 className="cardTitle">🤓 Discover the World at Your Fingertips!</h2>
         <p className="cardSubtitle">
-          Interact with the map, test your knowledge, and explore details
-          about any country in an immersive way.
+          Interact with the map, test your knowledge, and explore details about
+          any country in an immersive way.
         </p>
         <div className="card-content">
           <div className="card-item">
@@ -28,8 +27,8 @@ const Information = () => {
             <div>
               <h3 className="item-title">Test Your Knowledge</h3>
               <p className="item-description">
-                Take a fun quiz to challenge yourself and see how well you
-                know the world map!
+                Take a fun quiz to challenge yourself and see how well you know
+                the world map!
               </p>
             </div>
           </div>
@@ -47,7 +46,8 @@ const Information = () => {
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default Information;

@@ -12,15 +12,19 @@ const Quiz = () => {
     <div>
       <NavBar />
       <div className="game-container">
-        {!selectedLevel 
-          ? <QuizLevels
-              selectedLevel={selectedLevel}
-              setSelectedLevel={setSelectedLevel}
-            />
-          : selectedLevel.id !== 'bycontinent' ? <QuizGame
-              selectedLevel={selectedLevel}
-              setSelectedLevel={setSelectedLevel}
-            /> : <QuizByContinent setSelectedLevel={setSelectedLevel}/>}
+        {!selectedLevel ? (
+          <QuizLevels
+            selectedLevel={selectedLevel}
+            setSelectedLevel={setSelectedLevel}
+          />
+        ) : selectedLevel.id !== "bycontinent" ? (
+          <QuizGame
+            selectedLevel={selectedLevel}
+            setSelectedLevel={setSelectedLevel}
+          />
+        ) : (
+          <QuizByContinent setSelectedLevel={setSelectedLevel} />
+        )}
       </div>
     </div>
   );

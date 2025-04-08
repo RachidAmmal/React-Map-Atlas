@@ -27,11 +27,13 @@ export const fetchTheRandom = createAsyncThunk(
         const lat = parseFloat(response.data[0].lat);
         const lng = parseFloat(response.data[0].lon);
 
-        console.log("✅ تم جلب الإحداثيات:", lat, lng);
+        console.log("✅ Coordinates fetched:", lat, lng);
 
         return { countryRandom: { lat, lng }, country: commonName };
       } else {
-        return rejectWithValue(`❌ No coordinates found for country: ${commonName}`);
+        return rejectWithValue(
+          `❌ No coordinates found for country: ${commonName}`
+        );
       }
     } catch (error) {
       console.error("⚠️ Error while fetching country data: ", error);

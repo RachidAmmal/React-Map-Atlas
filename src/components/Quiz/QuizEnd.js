@@ -15,7 +15,7 @@ const QuizEnd = ({
   const endCard = [
     { id: 1, name: "Mode", content: selectedLevel },
     { id: 2, name: "Guesses", content: score + "/" + countries },
-    { id: 3, name: "Lives left", content: locaAttemts },
+    { id: 3, name: "Lives left", content: locaAttemts }
     //{ id: 4, name: "Time left", content: minutes + ":" + seconds  }
   ];
 
