@@ -150,7 +150,7 @@ const HomePage = () => {
             <span>My Country</span>
           </Link>
           <Link to="/about" className="homeLink">
-            <img className="icon" src="/images/icons/information1.png" alt="" />
+            <img className="icon" src="/images/icons/information.png" alt="" />
             <span>About</span>
           </Link>
         </div>
