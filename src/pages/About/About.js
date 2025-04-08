@@ -17,7 +17,13 @@ const About = () => {
         complete objectivity and is intended solely for educational purposes. It
         does not reflect any political stance or personal ideology. The source
         code is open to the public, and I warmly welcome contributions from
-        anyone on GitHub.
+        anyone on <a
+            href="https://github.com/RachidAmmal/React-Map-Atlas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>.
       </p>
 
       <div className="contact-section">
