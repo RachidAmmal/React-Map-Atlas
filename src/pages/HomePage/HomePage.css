@@ -14,7 +14,7 @@
 
 .moving {
   position: absolute;
-  top: 12%;
+  top: 10%;
   right: 50%;
   width: 500px;
   display: flex;

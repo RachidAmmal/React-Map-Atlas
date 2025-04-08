@@ -206,17 +206,24 @@
   }
 }
 
+@media (min-width: 539px) and (max-width: 542px) {
+    .navLinksMedia {
+      margin-top: 115px;
+    }
+}
+
 @media (max-width: 664px) {
   .nav-link-1 {
-    font-size: 16px;
+    font-size: 17px;
     margin-right: 5px;
   }
 }
 
 @media (max-width: 582px) {
   .nav-link-1 {
-    font-size: 15px;
-    margin-right: 2px;
+    font-size: 17px;
+    margin-right: 10px;
+    margin-top: 6px;
   }
 }
 
