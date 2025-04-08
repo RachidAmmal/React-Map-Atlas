@@ -73,6 +73,15 @@
   font-weight: 500;
   color: #ffffff;
   margin-right: 8px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+.button-search:hover {
+  background-color: var(--secondary-color-dark);
 }
 
 @media (max-width: 1015px){

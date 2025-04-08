@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SearchBar.css";
 import { useDispatch } from "react-redux";
 import { fetchCountryInfo, showMySearch } from "../../readux/country-info";
 import COUNTRY_NAMES_LIST from "../../constants/COUNTRY_NAMES_LIST";
+import { fetchTheRandom } from "../../readux/random-country";
 
 const SearchBar = () => {
   const suggestions = COUNTRY_NAMES_LIST;
@@ -64,6 +65,10 @@ const SearchBar = () => {
     setDisplayingSugg(true);
   };
 
+  const handleRandom = () => {
+    dispatch(fetchTheRandom());
+  };
+
   const searchSubmitHandler = e => {
     e.preventDefault();
   };
@@ -88,7 +93,7 @@ const SearchBar = () => {
             Search
           </button>
 
-          <button className="button-search" type="submit">
+          <button onClick={handleRandom} className="button-search" type="submit">
             Random
           </button>
         </div>

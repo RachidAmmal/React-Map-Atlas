@@ -60,7 +60,11 @@ const MainPage = () => {
   }, [data, countryName, searching, dispatch, handleCountryInfo]);
 
   useEffect(() => {
+    const timeout = setTimeout(() => {
     handleMyLocationRand2();
+  }, 300); 
+
+  return () => clearTimeout(timeout);
   }, [random, dispatch, handleMyLocationRand2]);
 
   useEffect(() => {

@@ -16,11 +16,14 @@
   padding: 20px;
 }
 
-.title {
+.titleQuizPresentation {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 30px;
   text-align: center;
+  animation: lev-quiz 1s 1;
+  -webkit-animation: lev-quiz 1s 1;
+  z-index: 100;
 }
 
 /* .levelsFlex {
@@ -143,6 +146,15 @@
     -moz-transform: translate(0);
     -ms-transform: translate(0);
     -o-transform: translate(0);
+}
+}
+
+@keyframes title-quiz {
+  0% {
+    opacity: 0;
+}
+  100% {
+    opacity: 1;
 }
 }
 

@@ -24,17 +24,14 @@ export const fetchTheRandom = createAsyncThunk(
       console.log("🔍 data API:", response.data);
 
       if (response.data.length > 0) {
-        return {
-          countryRandom: {
-            lat: parseFloat(response.data[0].lat),
-            lng: parseFloat(response.data[0].lon)
-          },
-          country: commonName
-        };
+        const lat = parseFloat(response.data[0].lat);
+        const lng = parseFloat(response.data[0].lon);
+
+        console.log("✅ تم جلب الإحداثيات:", lat, lng);
+
+        return { countryRandom: { lat, lng }, country: commonName };
       } else {
-        return rejectWithValue(
-          `❌ No coordinates found for country: ${commonName}`
-        );
+        return rejectWithValue(`❌ No coordinates found for country: ${commonName}`);
       }
     } catch (error) {
       console.error("⚠️ Error while fetching country data: ", error);
@@ -46,7 +43,7 @@ export const fetchTheRandom = createAsyncThunk(
 const randomSlice = createSlice({
   name: "center",
   initialState: {
-    random: { lat: 0, lng: 0 },
+    random: { lat: null, lng: null },
     country: "",
     error: null
   },
