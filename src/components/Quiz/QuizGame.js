@@ -141,7 +141,7 @@ const QuizGame = ({ selectedLevel, setSelectedLevel }) => {
 
     setIsRunning(true);
 
-    if (currentCountry?.name.toLowerCase() === inputCountry.toLowerCase()) {
+    if (currentCountry?.name.toLowerCase().trim() === inputCountry.toLowerCase().trim()) {
       const updatedCountries = localCountries.filter(
         (m) => m.name.toLowerCase() !== inputCountry.toLowerCase()
       );
