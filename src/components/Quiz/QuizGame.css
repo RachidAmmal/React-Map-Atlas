@@ -213,7 +213,7 @@
   }
 
   .flagsSliderQuiz {
-    width: 80%;
+    width: 85%;
   }
 
   .prevBtnQuiz,
@@ -225,6 +225,7 @@
   .flag-img {
     max-width: 100%;
     height: auto;
+    padding: 5px;
   }
 
   .inputQuizShi {

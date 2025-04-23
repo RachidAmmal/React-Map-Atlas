@@ -5,6 +5,11 @@ import "./Quiz.css";
 const QuizLevels = ({ selectedLevel, setSelectedLevel }) => {
   const levels = QUIZ_LEVELS;
 
+  const handleLevel = level => {
+    setSelectedLevel(level);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="levelsCont">
       <h1 className="titleQuizPresentation">
@@ -15,7 +20,7 @@ const QuizLevels = ({ selectedLevel, setSelectedLevel }) => {
           <div
             key={level.id}
             className={`level-card ${level.className}`}
-            onClick={() => setSelectedLevel(level)}
+            onClick={() => handleLevel(level)}
           >
             <div className="iconTitle9">
               <div className="icon-quiz">
